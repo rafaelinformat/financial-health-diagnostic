@@ -12,6 +12,8 @@ import FinancialTreatment from "./pages/FinancialTreatment";
 import Monitoring from "./pages/Monitoring";
 import Account from "./pages/Account";
 import HelpCenter from "./pages/HelpCenter";
+import DiagnosticHistory from "./pages/DiagnosticHistory";
+import DiagnosticDetail from "./pages/DiagnosticDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/financial-health" element={<FinancialHealth />} />
+          <Route path="/financial-health/history" element={<DiagnosticHistory />} />
+          <Route path="/financial-health/details/:id" element={<DiagnosticDetail />} />
           <Route path="/financial-treatment" element={<FinancialTreatment />} />
           <Route path="/monitoring" element={<Monitoring />} />
           <Route path="/account" element={<Account />} />
