@@ -1,9 +1,10 @@
 
 import React from 'react';
-import { ArrowUpIcon, ArrowDownIcon } from 'lucide-react';
+import { ArrowUpIcon, ArrowDownIcon, LightbulbIcon } from 'lucide-react';
 import DashboardLayout from '@/components/DashboardLayout';
 import HealthCard from '@/components/HealthCard';
 import KpiCard from '@/components/KpiCard';
+import { Card } from '@/components/ui/card';
 
 const Dashboard = () => {
   return (
@@ -66,6 +67,50 @@ const Dashboard = () => {
               change={-8.3}
               prefix="$"
             />
+          </div>
+        </div>
+        
+        {/* Recommendations Section */}
+        <div>
+          <h2 className="text-xl font-semibold mb-4">Recommendations</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="p-6">
+              <div className="flex items-start gap-4">
+                <div className="mt-1">
+                  <LightbulbIcon className="h-6 w-6 text-amber-400" />
+                </div>
+                <div className="space-y-2">
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-medium">Optimize Working Capital</h3>
+                    <div className="inline-block">
+                      <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full">High Impact</span>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground">
+                    Consider negotiating better payment terms with suppliers to improve cash flow and working capital efficiency.
+                  </p>
+                </div>
+              </div>
+            </Card>
+            
+            <Card className="p-6">
+              <div className="flex items-start gap-4">
+                <div className="mt-1">
+                  <LightbulbIcon className="h-6 w-6 text-amber-400" />
+                </div>
+                <div className="space-y-2">
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-medium">Review Pricing Strategy</h3>
+                    <div className="inline-block">
+                      <span className="bg-amber-500 text-white text-xs px-2 py-1 rounded-full">Medium Impact</span>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground">
+                    Current profit margins suggest room for strategic price adjustments in key product lines.
+                  </p>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
         

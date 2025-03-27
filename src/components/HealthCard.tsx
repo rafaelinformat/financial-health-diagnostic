@@ -18,12 +18,14 @@ const HealthCard: React.FC<HealthCardProps> = ({
   className,
   colorScheme = 'primary',
 }) => {
+  // Removed the incorrect comparison with 'auto'
   const getColorScheme = () => {
-    if (colorScheme !== 'auto') return colorScheme;
     if (value >= 80) return 'success';
     if (value >= 50) return 'warning';
     return 'danger';
   };
+
+  const finalColorScheme = colorScheme || getColorScheme();
 
   return (
     <div className={cn(
@@ -34,7 +36,7 @@ const HealthCard: React.FC<HealthCardProps> = ({
       <ProgressBar 
         value={value} 
         max={100} 
-        colorScheme={getColorScheme()} 
+        colorScheme={finalColorScheme} 
         size="md" 
         className="mb-4" 
       />
