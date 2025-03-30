@@ -15,38 +15,30 @@ import {
   TableRow,
 } from '@/components/ui/table';
 
-// Sample diagnostic data
+// Updated diagnostic data
 const diagnosticData = [
   {
     id: '1',
-    date: '10/01/2024',
-    companyName: 'TRAS ENGENHARIA',
-    size: 'ME',
-    revenue: 'R$ 0 até 100 mil',
-    classification: 'EM RISCO DE FALÊNCIA',
+    date: '30/03/2025',
+    companyName: 'TECNO CHAPA',
+    size: 'LDTA',
+    reference: '2023',
+    classification: 'SAUDÁVEL',
   },
   {
     id: '2',
-    date: '05/01/2024',
-    companyName: 'CONSTRUTORA ABC',
-    size: 'ME',
-    revenue: 'R$ 0 até 100 mil',
+    date: '30/03/2025',
+    companyName: 'TECNO CHAPA',
+    size: 'LDTA',
+    reference: '2024',
     classification: 'SAUDÁVEL',
   },
   {
     id: '3',
-    date: '28/12/2023',
-    companyName: 'TECH SOLUTIONS LTDA',
+    date: '30/03/2025',
+    companyName: 'TECNO CHAPA LDTA',
     size: 'EPP',
-    revenue: 'R$ 100 mil até 500 mil',
-    classification: 'ALERTA',
-  },
-  {
-    id: '4',
-    date: '15/12/2023',
-    companyName: 'CONSULTORIA XYZ',
-    size: 'ME',
-    revenue: 'R$ 0 até 100 mil',
+    reference: 'R$ 20245',
     classification: 'SAUDÁVEL',
   },
 ];
@@ -106,7 +98,7 @@ const DiagnosticHistory = () => {
                     <TableHead className="w-24">DATA</TableHead>
                     <TableHead>NOME</TableHead>
                     <TableHead>ENQUADRAMENTO</TableHead>
-                    <TableHead>RECEITA</TableHead>
+                    <TableHead>ANO DE REFERÊNCIA</TableHead>
                     <TableHead>CLASSIFICAÇÃO</TableHead>
                     <TableHead className="text-right">AÇÕES</TableHead>
                   </TableRow>
@@ -117,7 +109,7 @@ const DiagnosticHistory = () => {
                       <TableCell>{diagnostic.date}</TableCell>
                       <TableCell className="font-medium">{diagnostic.companyName}</TableCell>
                       <TableCell>{diagnostic.size}</TableCell>
-                      <TableCell>{diagnostic.revenue}</TableCell>
+                      <TableCell>{diagnostic.reference}</TableCell>
                       <TableCell className={getClassificationStyle(diagnostic.classification)}>
                         {diagnostic.classification}
                       </TableCell>
