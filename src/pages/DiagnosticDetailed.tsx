@@ -3,7 +3,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '@/components/DashboardLayout';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const DiagnosticDetailed = () => {
   const navigate = useNavigate();
@@ -27,201 +28,338 @@ const DiagnosticDetailed = () => {
           </TabsList>
           
           <TabsContent value="diagnostico" className="animate-fade-in space-y-8">
-            <div className="glass-card p-6">
-              <h2 className="text-xl font-semibold mb-4">Dados da Empresa - 2023</h2>
-              <div className="space-y-2">
-                <p><strong>Nome da empresa:</strong> TECNO CHAPA SOLUÇÕES EM CORTE E DOBRA LTDA</p>
-                <p><strong>Setor de atuação:</strong> Indústria/Serviços de Corte e Dobra</p>
-                <p><strong>Período de análise:</strong> 01/01/2023 a 31/12/2023</p>
-              </div>
-            </div>
+            {/* Titulo do Diagnostico */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Diagnóstico Financeiro - Tecno Chapa (2023)</CardTitle>
+              </CardHeader>
+            </Card>
 
-            <div className="glass-card p-6">
-              <h2 className="text-xl font-semibold mb-4">Parâmetros de Liquidez</h2>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Indicador</TableHead>
-                    <TableHead>Valor</TableHead>
-                    <TableHead>Referência</TableHead>
-                    <TableHead>Resultado da Análise</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>Liquidez Corrente</TableCell>
-                    <TableCell>1.00</TableCell>
-                    <TableCell>&gt; 1.0 (Ideal)</TableCell>
-                    <TableCell>Limítrofe</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Liquidez Seca</TableCell>
-                    <TableCell>0.18</TableCell>
-                    <TableCell>&gt; 1.0</TableCell>
-                    <TableCell>Crítica</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Liquidez Imediata</TableCell>
-                    <TableCell>0.57</TableCell>
-                    <TableCell>&gt; 0.5</TableCell>
-                    <TableCell>Boa</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </div>
+            {/* Dados da Empresa */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Dados da Empresa</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <div className="space-y-2">
+                  <p><strong>Nome da empresa:</strong> Tecno Chapa</p>
+                  <p><strong>Setor de atuação:</strong> Indústria</p>
+                  <p><strong>Período de análise:</strong> 2023</p>
+                </div>
+              </CardContent>
+            </Card>
 
-            <div className="glass-card p-6">
-              <h2 className="text-xl font-semibold mb-4">Margens</h2>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Indicador</TableHead>
-                    <TableHead>Valor</TableHead>
-                    <TableHead>Interpretação</TableHead>
-                    <TableHead>Resultado da Análise</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>Margem Bruta</TableCell>
-                    <TableCell>1.00</TableCell>
-                    <TableCell>Margem de contribuição</TableCell>
-                    <TableCell>Excelente</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Margem Operacional</TableCell>
-                    <TableCell>0.73</TableCell>
-                    <TableCell>Eficiência operacional</TableCell>
-                    <TableCell>Alta</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Margem Líquida</TableCell>
-                    <TableCell>0.73</TableCell>
-                    <TableCell></TableCell>
-                    <TableCell>Alta</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </div>
+            {/* Parametros de Liquidez */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Parâmetros de Liquidez</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Indicador</TableHead>
+                      <TableHead>Valor</TableHead>
+                      <TableHead>Referência</TableHead>
+                      <TableHead>Resultado da Análise</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>Liquidez Corrente</TableCell>
+                      <TableCell>1,68x</TableCell>
+                      <TableCell>Ideal &gt; 1,5</TableCell>
+                      <TableCell>Excelente - Alta capacidade de pagamento das obrigações de curto prazo</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Liquidez Seca</TableCell>
+                      <TableCell>1,45x</TableCell>
+                      <TableCell>Ideal &gt; 1</TableCell>
+                      <TableCell>Excelente - Ampla capacidade de liquidez sem depender de estoques</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Liquidez Imediata</TableCell>
+                      <TableCell>0,26x</TableCell>
+                      <TableCell>Ideal &gt; 1</TableCell>
+                      <TableCell>Excelente - Caixa suficiente para cobrir obrigações de curto prazo</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
 
-            <div className="glass-card p-6">
-              <h2 className="text-xl font-semibold mb-4">Retorno sobre o Capital</h2>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Indicador</TableHead>
-                    <TableHead>Valor</TableHead>
-                    <TableHead>Interpretação</TableHead>
-                    <TableHead>Resultado da Análise</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>ROA (Retorno sobre o Ativo)</TableCell>
-                    <TableCell>0.72</TableCell>
-                    <TableCell>Rentabilidade dos ativos</TableCell>
-                    <TableCell>Muito forte</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>ROE (Retorno sobre o PL)</TableCell>
-                    <TableCell>0.77</TableCell>
-                    <TableCell>Retorno ao sócio</TableCell>
-                    <TableCell>Excelente</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </div>
+            {/* Atividades Operacionais */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Atividades Operacionais</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Indicador</TableHead>
+                      <TableHead>Valor</TableHead>
+                      <TableHead>Interpretação</TableHead>
+                      <TableHead>Resultado da Análise</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>Prazo Médio de Recebimento (PMR)</TableCell>
+                      <TableCell>69,97 dias</TableCell>
+                      <TableCell>&lt; 30 dias (Ideal)</TableCell>
+                      <TableCell>Moderado - Prazo de recebimento em geral elevado</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Prazo Médio de Estocagem (PME)</TableCell>
+                      <TableCell>0,00 dias</TableCell>
+                      <TableCell>&lt; 60 dias (Ideal)</TableCell>
+                      <TableCell>Excelente - Sem estoque acumulado</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Prazo Médio de Pagamento (PMP)</TableCell>
+                      <TableCell>10,99 dias</TableCell>
+                      <TableCell>&gt; 30 dias (Ideal)</TableCell>
+                      <TableCell>Baixo - Prazos curtos de pagamento</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Ciclo Operacional</TableCell>
+                      <TableCell>69,97 dias</TableCell>
+                      <TableCell>&lt; 150 dias (Ideal)</TableCell>
+                      <TableCell>Bom - Ciclo operacional eficiente</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Ciclo de Caixa</TableCell>
+                      <TableCell>58,91 dias</TableCell>
+                      <TableCell>&lt; 90 dias (Ideal)</TableCell>
+                      <TableCell>Bom - Ciclo de caixa equilibrado</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
 
-            <div className="glass-card p-6">
-              <h2 className="text-xl font-semibold mb-4">Estrutura de Capital</h2>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Indicador</TableHead>
-                    <TableHead>Valor</TableHead>
-                    <TableHead>Interpretação</TableHead>
-                    <TableHead>Resultado da Análise</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>Índice de Endividamento Geral</TableCell>
-                    <TableCell>1.00</TableCell>
-                    <TableCell>Proporção de dívida</TableCell>
-                    <TableCell>Risco</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Capital de Terceiros / Capital Próprio</TableCell>
-                    <TableCell>1.07</TableCell>
-                    <TableCell>Alavancagem</TableCell>
-                    <TableCell>Frágil</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Grau de Alavancagem Financeira</TableCell>
-                    <TableCell>Retorno &gt; custo</TableCell>
-                    <TableCell>Eficiência da dívida</TableCell>
-                    <TableCell>Positivo</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </div>
+            {/* Estrutura de Capital */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Estrutura de Capital</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Indicador</TableHead>
+                      <TableHead>Valor</TableHead>
+                      <TableHead>Interpretação</TableHead>
+                      <TableHead>Resultado da Análise</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>Índice de Endividamento Geral</TableCell>
+                      <TableCell>0,585</TableCell>
+                      <TableCell>&lt; 0,6 (Ideal)</TableCell>
+                      <TableCell>Bom - Nível de endividamento dentro do ideal</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Capital de Terceiros / Capital Próprio</TableCell>
+                      <TableCell>0,574</TableCell>
+                      <TableCell>&lt; 1 (Ideal)</TableCell>
+                      <TableCell>Bom - Financiamento majoritário com capital próprio</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Composição do Endividamento</TableCell>
+                      <TableCell>1,000</TableCell>
+                      <TableCell>0,3 - 0,6 (Ideal)</TableCell>
+                      <TableCell>Alto - Todo o endividamento é de curto prazo</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
 
-            <div className="glass-card p-6">
-              <h2 className="text-xl font-semibold mb-4">Pagamento do Principal</h2>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Indicador</TableHead>
-                    <TableHead>Valor</TableHead>
-                    <TableHead>Interpretação</TableHead>
-                    <TableHead>Resultado da Análise</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>Dívida Líquida/EBITDA</TableCell>
-                    <TableCell>0.60</TableCell>
-                    <TableCell>Ideal até 3x</TableCell>
-                    <TableCell>Saudável</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Dívida Líquida/PL</TableCell>
-                    <TableCell>0.45</TableCell>
-                    <TableCell>Ideal &lt; 1</TableCell>
-                    <TableCell>Boa</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </div>
+            {/* Cobertura de Juros */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Cobertura de Juros</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Indicador</TableHead>
+                      <TableHead>Valor</TableHead>
+                      <TableHead>Interpretação</TableHead>
+                      <TableHead>Resultado da Análise</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>Índice de Cobertura de Juros</TableCell>
+                      <TableCell>19,94x</TableCell>
+                      <TableCell>&gt; 3 (Ideal)</TableCell>
+                      <TableCell>Excelente - Alta capacidade de pagamento dos juros</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
 
-            <div className="glass-card p-6">
-              <h2 className="text-xl font-semibold mb-4">Rentabilidade e Eficiência</h2>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Indicador</TableHead>
-                    <TableHead>Valor</TableHead>
-                    <TableHead>Interpretação</TableHead>
-                    <TableHead>Resultado da Análise</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>Giro do Ativo Total</TableCell>
-                    <TableCell>0.99</TableCell>
-                    <TableCell>Receita por ativo</TableCell>
-                    <TableCell>Razoável</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </div>
+            {/* Pagamento do Principal */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Pagamento do Principal</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Indicador</TableHead>
+                      <TableHead>Valor</TableHead>
+                      <TableHead>Interpretação</TableHead>
+                      <TableHead>Resultado da Análise</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>Dívida Líquida/EBITDA</TableCell>
+                      <TableCell>-0,78x</TableCell>
+                      <TableCell>&lt; 3 (Ideal)</TableCell>
+                      <TableCell>Negativo - Caixa superior à dívida</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Dívida Líquida/PL</TableCell>
+                      <TableCell>-0,61x</TableCell>
+                      <TableCell>&lt; 0,5 (Ideal)</TableCell>
+                      <TableCell>Negativo - Posição financeira confortável</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
 
-            <div className="glass-card p-6">
-              <h2 className="text-xl font-semibold mb-4">Conclusão</h2>
-              <p className="p-4 bg-muted/20 rounded-md">
-                Saúde Financeira Saudável, porém com alerta para liquidez seca e endividamento no limite dos ativos.
-              </p>
-            </div>
+            {/* Rentabilidade e Eficiência */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Rentabilidade e Eficiência</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Indicador</TableHead>
+                      <TableHead>Valor</TableHead>
+                      <TableHead>Interpretação</TableHead>
+                      <TableHead>Resultado da Análise</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>Giro do Ativo Total</TableCell>
+                      <TableCell>2,30x</TableCell>
+                      <TableCell>&gt; 0,5 (Ideal)</TableCell>
+                      <TableCell>Excelente - Alta eficiência no uso dos ativos</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Giro do Ativo Permanente</TableCell>
+                      <TableCell>5,99x</TableCell>
+                      <TableCell>&gt; 0,5 (Ideal)</TableCell>
+                      <TableCell>Bom - Eficiência no uso dos ativos permanentes</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Giro do Ativo Total</TableCell>
+                      <TableCell>5,99x</TableCell>
+                      <TableCell>&gt; 0,5 (Ideal)</TableCell>
+                      <TableCell>Bom - Eficiência geral no uso dos ativos</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+
+            {/* Margens */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Margens</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Indicador</TableHead>
+                      <TableHead>Valor</TableHead>
+                      <TableHead>Interpretação</TableHead>
+                      <TableHead>Resultado da Análise</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>Margem Bruta</TableCell>
+                      <TableCell>100%</TableCell>
+                      <TableCell>&gt; 40% (Ideal)</TableCell>
+                      <TableCell>Excelente - Alta margem de contribuição</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Margem Operacional</TableCell>
+                      <TableCell>37,18%</TableCell>
+                      <TableCell>&gt; 10% (Ideal)</TableCell>
+                      <TableCell>Excelente - Alta eficiência operacional</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Margem Líquida</TableCell>
+                      <TableCell>31,8%</TableCell>
+                      <TableCell>&gt; 5% (Ideal)</TableCell>
+                      <TableCell>Excelente - Alta eficiência na conversão de receita em lucro</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+
+            {/* Retorno sobre o Capital */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Retorno sobre o Capital</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Indicador</TableHead>
+                      <TableHead>Valor</TableHead>
+                      <TableHead>Interpretação</TableHead>
+                      <TableHead>Resultado da Análise</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>ROA (Retorno sobre o Ativo)</TableCell>
+                      <TableCell>73,38%</TableCell>
+                      <TableCell>&gt; 5% (Ideal)</TableCell>
+                      <TableCell>Excelente - Retorno elevado sobre os ativos totais</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>ROE (Retorno sobre o Patrimônio Líquido)</TableCell>
+                      <TableCell>77,24%</TableCell>
+                      <TableCell>&gt; 15% (Ideal)</TableCell>
+                      <TableCell>Excelente - Alto retorno sobre o capital próprio</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+
+            {/* Conclusão */}
+            <Card className="border-border/40 shadow-sm">
+              <CardHeader className="bg-muted/30 pb-2">
+                <CardTitle className="text-lg text-primary">Conclusão</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <p className="p-4 bg-muted/20 rounded-md">
+                  A empresa Tecno Chapa apresenta uma situação financeira "muito firme" em 2023, com alta rentabilidade, sólida posição de caixa e baixo endividamento. Os principais destaques são:
+                </p>
+              </CardContent>
+            </Card>
           </TabsContent>
           
           <TabsContent value="diagnostico-geral">
