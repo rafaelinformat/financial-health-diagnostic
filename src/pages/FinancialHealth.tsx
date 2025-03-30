@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { Upload, FileText, CheckCircle } from 'lucide-react';
 import DashboardLayout from '@/components/DashboardLayout';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Link, useNavigate } from 'react-router-dom';
 import DiagnosticStep from '@/components/DiagnosticStep';
 import HealthCard from '@/components/HealthCard';
 import KpiCard from '@/components/KpiCard';
@@ -12,6 +14,7 @@ const FinancialHealth = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [fileUploaded, setFileUploaded] = useState(false);
+  const navigate = useNavigate();
   
   const handleFileUpload = () => {
     setIsLoading(true);
@@ -204,31 +207,66 @@ const FinancialHealth = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <DiagnosticStep 
-            step={1} 
-            currentStep={currentStep} 
-            title="Carregar Dados" 
-            description="Envie seus dados financeiros para análise"
-            onClick={() => handleStepClick(1)}
-          />
-          <DiagnosticStep 
-            step={2} 
-            currentStep={currentStep} 
-            title="Visualizar Métricas" 
-            description="Revise os indicadores financeiros principais"
-            onClick={() => handleStepClick(2)}
-          />
-          <DiagnosticStep 
-            step={3} 
-            currentStep={currentStep} 
-            title="Diagnóstico Financeiro" 
-            description="Análise completa e recomendações"
-            onClick={() => handleStepClick(3)}
-          />
-        </div>
-        
-        {renderStepContent()}
+        <Tabs defaultValue="diagnostico" className="w-full">
+          <TabsList className="mb-6 bg-muted/20 p-1 rounded-md">
+            <TabsTrigger value="diagnostico">Diagnóstico Detalhado</TabsTrigger>
+            <TabsTrigger value="historico" onClick={() => navigate('/financial-health/history')}>Histórico do Diagnóstico</TabsTrigger>
+            <TabsTrigger value="configuracoes">Configurações</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="diagnostico" className="animate-fade-in">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <DiagnosticStep 
+                step={1} 
+                currentStep={currentStep} 
+                title="Carregar Dados" 
+                description="Envie seus dados financeiros para análise"
+                onClick={() => handleStepClick(1)}
+              />
+              <DiagnosticStep 
+                step={2} 
+                currentStep={currentStep} 
+                title="Visualizar Métricas" 
+                description="Revise os indicadores financeiros principais"
+                onClick={() => handleStepClick(2)}
+              />
+              <DiagnosticStep 
+                step={3} 
+                currentStep={currentStep} 
+                title="Diagnóstico Financeiro" 
+                description="Análise completa e recomendações"
+                onClick={() => handleStepClick(3)}
+              />
+            </div>
+            
+            {renderStepContent()}
+          </TabsContent>
+          
+          <TabsContent value="historico">
+            {/* This content will not be displayed as we navigate away */}
+          </TabsContent>
+          
+          <TabsContent value="configuracoes">
+            <div className="glass-card p-8 animate-fade-in">
+              <h2 className="text-2xl font-semibold mb-6">Configurações de Diagnóstico</h2>
+              <p className="text-muted-foreground mb-8">
+                Personalize as configurações do seu diagnóstico financeiro e defina os parâmetros de análise.
+              </p>
+              
+              <div className="space-y-6">
+                <div className="border rounded-lg p-6">
+                  <h3 className="text-lg font-medium mb-4">Preferências de Análise</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Configure as preferências para análises futuras.
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Conteúdo em desenvolvimento
+                  </p>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </DashboardLayout>
   );
