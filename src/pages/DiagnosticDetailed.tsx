@@ -158,7 +158,7 @@ const DiagnosticDetailed = () => {
                   </TableRow>
                   <TableRow>
                     <TableCell>Grau de Alavancagem Financeira</TableCell>
-                    <TableCell>Retorno > custo</TableCell>
+                    <TableCell>Retorno &gt; custo</TableCell>
                     <TableCell>Eficiência da dívida</TableCell>
                     <TableCell>Positivo</TableCell>
                   </TableRow>
@@ -187,7 +187,7 @@ const DiagnosticDetailed = () => {
                   <TableRow>
                     <TableCell>Dívida Líquida/PL</TableCell>
                     <TableCell>0.45</TableCell>
-                    <TableCell>Ideal < 1</TableCell>
+                    <TableCell>Ideal &lt; 1</TableCell>
                     <TableCell>Boa</TableCell>
                   </TableRow>
                 </TableBody>
