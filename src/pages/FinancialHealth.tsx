@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { Upload, FileText, CheckCircle } from 'lucide-react';
+import { Upload, FileText, CheckCircle, ExternalLink } from 'lucide-react';
 import DashboardLayout from '@/components/DashboardLayout';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link, useNavigate } from 'react-router-dom';
@@ -185,7 +185,12 @@ const FinancialHealth = () => {
               </ul>
             </div>
             
-            <div className="flex justify-end">
+            <div className="flex justify-between">
+              <Button onClick={() => navigate('/financial-health/detailed')} variant="outline" className="button-animated flex items-center gap-2">
+                <ExternalLink className="h-4 w-4" />
+                Ver diagnóstico detalhado
+              </Button>
+              
               <Button onClick={() => toast.success('Relatório gerado com sucesso!')} className="button-animated">
                 Gerar Relatório Completo
               </Button>
@@ -209,7 +214,8 @@ const FinancialHealth = () => {
         
         <Tabs defaultValue="diagnostico" className="w-full">
           <TabsList className="mb-6 bg-muted/20 p-1 rounded-md">
-            <TabsTrigger value="diagnostico">Diagnóstico Detalhado</TabsTrigger>
+            <TabsTrigger value="diagnostico">Diagnóstico Geral</TabsTrigger>
+            <TabsTrigger value="diagnostico-detalhado" onClick={() => navigate('/financial-health/detailed')}>Diagnóstico Detalhado</TabsTrigger>
             <TabsTrigger value="historico" onClick={() => navigate('/financial-health/history')}>Histórico do Diagnóstico</TabsTrigger>
             <TabsTrigger value="configuracoes">Configurações</TabsTrigger>
           </TabsList>
@@ -240,6 +246,10 @@ const FinancialHealth = () => {
             </div>
             
             {renderStepContent()}
+          </TabsContent>
+          
+          <TabsContent value="diagnostico-detalhado">
+            {/* This content will not be displayed as we navigate away */}
           </TabsContent>
           
           <TabsContent value="historico">

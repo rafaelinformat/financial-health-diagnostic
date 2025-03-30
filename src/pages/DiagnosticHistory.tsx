@@ -83,10 +83,15 @@ const DiagnosticHistory = () => {
 
         <Tabs defaultValue="historico" className="w-full">
           <TabsList className="mb-6 bg-muted/20 p-1 rounded-md">
-            <TabsTrigger value="diagnostico" onClick={() => navigate('/financial-health')}>Diagnóstico Detalhado</TabsTrigger>
+            <TabsTrigger value="diagnostico-geral" onClick={() => navigate('/financial-health')}>Diagnóstico Geral</TabsTrigger>
+            <TabsTrigger value="diagnostico" onClick={() => navigate('/financial-health/detailed')}>Diagnóstico Detalhado</TabsTrigger>
             <TabsTrigger value="historico">Histórico do Diagnóstico</TabsTrigger>
             <TabsTrigger value="configuracoes">Configurações</TabsTrigger>
           </TabsList>
+          
+          <TabsContent value="diagnostico-geral">
+            {/* This content will not be displayed as we navigate away */}
+          </TabsContent>
           
           <TabsContent value="diagnostico">
             {/* This content will not be displayed as we navigate away */}

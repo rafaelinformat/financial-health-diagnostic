@@ -24,7 +24,8 @@ const DiagnosticDetail = () => {
 
         <Tabs defaultValue="diagnostico" className="w-full">
           <TabsList className="mb-6 bg-muted/20 p-1 rounded-md">
-            <TabsTrigger value="diagnostico" onClick={() => navigate('/financial-health')}>Diagnóstico Detalhado</TabsTrigger>
+            <TabsTrigger value="diagnostico-geral" onClick={() => navigate('/financial-health')}>Diagnóstico Geral</TabsTrigger>
+            <TabsTrigger value="diagnostico" onClick={() => navigate('/financial-health/detailed')}>Diagnóstico Detalhado</TabsTrigger>
             <TabsTrigger value="historico" onClick={() => navigate('/financial-health/history')}>Histórico do Diagnóstico</TabsTrigger>
             <TabsTrigger value="configuracoes">Configurações</TabsTrigger>
           </TabsList>
