@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import DashboardLayout from '@/components/DashboardLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -15,6 +16,7 @@ import {
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
 import { useForm } from 'react-hook-form';
+import { Checkbox } from '@/components/ui/checkbox';
 
 const Monitoring = () => {
   return (
@@ -335,13 +337,77 @@ const IndicatorConfigRow = ({ indicator }: { indicator: IndicatorProps }) => {
               <Info className="h-4 w-4" />
             </button>
           </PopoverTrigger>
-          <PopoverContent className="w-96" align="start">
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium">{indicator.name}</h4>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Descrição detalhada do indicador e como ele é calculado.
-                </p>
+          <PopoverContent className="w-96 p-0" align="start">
+            <div className="p-4">
+              <h4 className="font-medium mb-4">{indicator.name}</h4>
+              
+              <div className="space-y-4 mb-4">
+                <div className="border rounded-lg">
+                  <h5 className="font-medium p-3 border-b bg-muted/20">ATIVAÇÃO DE ALERTA DE MONITORAMENTO</h5>
+                  
+                  <div className="border-b">
+                    <div className="p-3 flex items-center justify-between">
+                      <div>
+                        <p className="text-red-500 font-medium">CRÍTICO</p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-sm">Valor controle:</span>
+                          <Input className="w-24 h-8 bg-muted/30" placeholder="<1,0" />
+                        </div>
+                      </div>
+                      <Switch />
+                    </div>
+                  </div>
+                  
+                  <div className="border-b">
+                    <div className="p-3 flex items-center justify-between">
+                      <div>
+                        <p className="text-amber-500 font-medium">MÉDIO</p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-sm">Valor controle:</span>
+                          <Input className="w-16 h-8 bg-muted/30" placeholder="0,8" />
+                          <span>-</span>
+                          <Input className="w-16 h-8 bg-muted/30" placeholder="0,30" />
+                        </div>
+                      </div>
+                      <Switch />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <div className="p-3 flex items-center justify-between">
+                      <div>
+                        <p className="text-green-500 font-medium">LEVE</p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-sm">Valor Controle:</span>
+                          <Input className="w-24 h-8 bg-muted/30" placeholder="<1,0" />
+                        </div>
+                      </div>
+                      <Switch />
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <p className="text-sm font-medium mb-2">RECEBER ALERTA PREFERENCIALMENTE:</p>
+                  <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-2">
+                      <Checkbox id="whatsapp" />
+                      <label htmlFor="whatsapp" className="text-sm">WhatsApp</label>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Checkbox id="email" />
+                      <label htmlFor="email" className="text-sm">E-mail</label>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Checkbox id="sms" />
+                      <label htmlFor="sms" className="text-sm">SMS</label>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Checkbox id="notification" />
+                      <label htmlFor="notification" className="text-sm">Notificações</label>
+                    </div>
+                  </div>
+                </div>
               </div>
               
               <Form {...form}>
@@ -400,21 +466,9 @@ const IndicatorConfigRow = ({ indicator }: { indicator: IndicatorProps }) => {
                     )}
                   />
                   
-                  <FormField
-                    control={form.control}
-                    name="notes"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Observações</FormLabel>
-                        <FormControl>
-                          <Textarea placeholder="Notas ou observações adicionais" {...field} />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <div className="flex justify-end">
-                    <Button type="submit">Salvar Configurações</Button>
+                  <div className="flex justify-end gap-2 mt-4">
+                    <Button variant="outline">Cancel</Button>
+                    <Button variant="default" className="bg-slate-800">Save Changes</Button>
                   </div>
                 </div>
               </Form>
