@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface TreatmentCardProps {
   title: string;
@@ -24,6 +25,14 @@ const TreatmentCard: React.FC<TreatmentCardProps> = ({
   metricValue,
   metricSubtext,
 }) => {
+  const navigate = useNavigate();
+  
+  const handleViewDetailedPlan = () => {
+    // Navigate to the same page but with tratamento-detalhado tab
+    const currentPath = window.location.pathname;
+    navigate(`${currentPath}?tab=tratamento-detalhado`);
+  };
+  
   return (
     <Card className="card-animated">
       <CardHeader className="pb-2">
@@ -44,7 +53,11 @@ const TreatmentCard: React.FC<TreatmentCardProps> = ({
           </div>
           <ArrowUpRight className="w-10 h-10 text-success/20" />
         </div>
-        <Button variant="outline" className="w-full button-animated">
+        <Button 
+          variant="outline" 
+          className="w-full button-animated"
+          onClick={handleViewDetailedPlan}
+        >
           Ver plano detalhado <ArrowRight className="w-4 h-4 ml-2" />
         </Button>
       </CardContent>
