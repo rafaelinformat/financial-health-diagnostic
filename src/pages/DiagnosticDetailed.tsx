@@ -31,7 +31,7 @@ const DiagnosticDetailed = () => {
           <TabsContent value="diagnostico" className="animate-fade-in space-y-8">
             <div className="bg-slate-100 p-6 rounded-lg">
               <h2 className="text-2xl font-semibold text-indigo-900 mb-1">
-                Tratamento da Saúde Financeira – Dados Observados no Exame
+                Resultado do Diagnostico de Saúde Financeira Detalhado
               </h2>
               <p className="text-muted-foreground mb-6">
                 Detalhamento completo do tratamento financeiro recomendado com base na análise realizada.
