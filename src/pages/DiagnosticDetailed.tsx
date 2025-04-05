@@ -1,10 +1,11 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '@/components/DashboardLayout';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { CheckCircle } from 'lucide-react';
 
 const DiagnosticDetailed = () => {
   const navigate = useNavigate();
@@ -28,28 +29,60 @@ const DiagnosticDetailed = () => {
           </TabsList>
           
           <TabsContent value="diagnostico" className="animate-fade-in space-y-8">
-            {/* Titulo do Diagnostico */}
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Diagnóstico Financeiro - Tecno Chapa (2023)</CardTitle>
-              </CardHeader>
-            </Card>
+            <div className="bg-slate-100 p-6 rounded-lg">
+              <h2 className="text-2xl font-semibold text-indigo-900 mb-1">
+                Tratamento da Saúde Financeira – Dados Observados no Exame
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                Detalhamento completo do tratamento financeiro recomendado com base na análise realizada.
+              </p>
 
-            {/* Dados da Empresa */}
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Dados da Empresa</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <div className="space-y-2">
-                  <p><strong>Nome da empresa:</strong> Tecno Chapa</p>
-                  <p><strong>Setor de atuação:</strong> Indústria</p>
-                  <p><strong>Período de análise:</strong> 2023</p>
-                </div>
-              </CardContent>
-            </Card>
+              <Card className="border-0 shadow-sm">
+                <CardContent className="p-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div className="col-span-1 lg:col-span-2">
+                      <h3 className="font-semibold text-lg mb-2">Exame de Risco de Falência</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3">
+                        <div>
+                          <p className="text-sm text-muted-foreground">Empresa:</p>
+                          <p className="font-medium">TRANS ENGENHARIA</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Data de análise dos dados:</p>
+                          <p className="font-medium">2024</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Data de Criação da Empresa:</p>
+                          <p className="font-medium">10/12/2004</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Idade da empresa:</p>
+                          <p className="font-medium">20 anos</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Setor:</p>
+                          <p className="font-medium">Serviço Instalação Hidráulica/Elétrica</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Solicitado por:</p>
+                          <p className="font-medium">Ronaldo</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col justify-center items-center bg-slate-50 rounded-lg p-4">
+                      <p className="text-sm text-muted-foreground">Status da Empresa</p>
+                      <div className="my-2">
+                        <Badge className="bg-green-500 hover:bg-green-600">Saudável</Badge>
+                      </div>
+                      <div className="mt-2 flex justify-center">
+                        <CheckCircle className="h-10 w-10 text-green-500" />
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
 
-            {/* Parametros de Liquidez */}
             <Card className="border-border/40 shadow-sm">
               <CardHeader className="bg-muted/30 pb-2">
                 <CardTitle className="text-lg text-primary">Parâmetros de Liquidez</CardTitle>
@@ -88,7 +121,6 @@ const DiagnosticDetailed = () => {
               </CardContent>
             </Card>
 
-            {/* Atividades Operacionais */}
             <Card className="border-border/40 shadow-sm">
               <CardHeader className="bg-muted/30 pb-2">
                 <CardTitle className="text-lg text-primary">Atividades Operacionais</CardTitle>
@@ -139,7 +171,6 @@ const DiagnosticDetailed = () => {
               </CardContent>
             </Card>
 
-            {/* Estrutura de Capital */}
             <Card className="border-border/40 shadow-sm">
               <CardHeader className="bg-muted/30 pb-2">
                 <CardTitle className="text-lg text-primary">Estrutura de Capital</CardTitle>
@@ -178,7 +209,6 @@ const DiagnosticDetailed = () => {
               </CardContent>
             </Card>
 
-            {/* Cobertura de Juros */}
             <Card className="border-border/40 shadow-sm">
               <CardHeader className="bg-muted/30 pb-2">
                 <CardTitle className="text-lg text-primary">Cobertura de Juros</CardTitle>
@@ -205,7 +235,6 @@ const DiagnosticDetailed = () => {
               </CardContent>
             </Card>
 
-            {/* Pagamento do Principal */}
             <Card className="border-border/40 shadow-sm">
               <CardHeader className="bg-muted/30 pb-2">
                 <CardTitle className="text-lg text-primary">Pagamento do Principal</CardTitle>
@@ -238,7 +267,6 @@ const DiagnosticDetailed = () => {
               </CardContent>
             </Card>
 
-            {/* Rentabilidade e Eficiência */}
             <Card className="border-border/40 shadow-sm">
               <CardHeader className="bg-muted/30 pb-2">
                 <CardTitle className="text-lg text-primary">Rentabilidade e Eficiência</CardTitle>
@@ -277,7 +305,6 @@ const DiagnosticDetailed = () => {
               </CardContent>
             </Card>
 
-            {/* Margens */}
             <Card className="border-border/40 shadow-sm">
               <CardHeader className="bg-muted/30 pb-2">
                 <CardTitle className="text-lg text-primary">Margens</CardTitle>
@@ -316,7 +343,6 @@ const DiagnosticDetailed = () => {
               </CardContent>
             </Card>
 
-            {/* Retorno sobre o Capital */}
             <Card className="border-border/40 shadow-sm">
               <CardHeader className="bg-muted/30 pb-2">
                 <CardTitle className="text-lg text-primary">Retorno sobre o Capital</CardTitle>
@@ -349,7 +375,6 @@ const DiagnosticDetailed = () => {
               </CardContent>
             </Card>
 
-            {/* Conclusão */}
             <Card className="border-border/40 shadow-sm">
               <CardHeader className="bg-muted/30 pb-2">
                 <CardTitle className="text-lg text-primary">Conclusão</CardTitle>
