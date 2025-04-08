@@ -1,90 +1,160 @@
 
-import React from 'react';
-import { TabsContent } from '@/components/ui/tabs';
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import TreatmentCard from './TreatmentCard';
 import TreatmentPlanCard from './TreatmentPlanCard';
-import { Clipboard, LineChart } from 'lucide-react';
+import { Upload, ChevronRight, ArrowRight } from 'lucide-react';
+import { toast } from 'sonner';
 
-const TreatmentTab: React.FC = () => {
-  const treatmentCards = [
+export type TreatmentPlanItem = {
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonVariant: "default" | "outline";
+};
+
+const TreatmentTab = () => {
+  const [isUploading, setIsUploading] = useState(false);
+  const [hasUploaded, setHasUploaded] = useState(false);
+
+  const handleUpload = () => {
+    setIsUploading(true);
+    setTimeout(() => {
+      setIsUploading(false);
+      setHasUploaded(true);
+      toast.success('Dados financeiros carregados com sucesso!');
+    }, 1500);
+  };
+
+  const treatments = [
     {
-      title: 'Reestruturação de Dívidas',
-      icon: Clipboard,
-      priority: 'Alta',
-      description: 'Identificamos oportunidades para reestruturar suas dívidas atuais, reduzindo taxas de juros e melhorando o fluxo de caixa.',
-      metricLabel: 'Economia estimada',
-      metricValue: 'R$ 12.450',
-      metricSubtext: '/ano',
+      title: "Gestão de Fluxo de Caixa",
+      description: "Implementação de sistema de controle diário de fluxo de caixa para evitar problemas de liquidez",
+      status: "Em Andamento",
+      progress: 35,
+      startDate: "15/03/2023",
+      endDate: "15/06/2023"
     },
     {
-      title: 'Otimização de Capital de Giro',
-      icon: LineChart,
-      priority: 'Média',
-      description: 'Estratégias para melhorar o ciclo de conversão de caixa e liberar capital de giro para operações.',
-      metricLabel: 'Melhoria de fluxo de caixa',
-      metricValue: '+22%',
-      metricSubtext: 'projeção',
+      title: "Redução de Custos Operacionais",
+      description: "Análise e redução de despesas operacionais em 15% nos próximos 60 dias",
+      status: "Não Iniciado",
+      progress: 0,
+      startDate: "Pendente",
+      endDate: "Pendente"
     },
     {
-      title: 'Redução de Custos Operacionais',
-      icon: Clipboard,
-      priority: 'Alta',
-      description: 'Plano detalhado para identificar e reduzir custos operacionais sem impactar a qualidade dos produtos/serviços.',
-      metricLabel: 'Redução de custos estimada',
-      metricValue: '15-20%',
-      metricSubtext: 'em 6 meses',
+      title: "Renegociação de Dívidas",
+      description: "Estratégia para renegociação de dívidas com fornecedores e instituições financeiras",
+      status: "Concluído",
+      progress: 100,
+      startDate: "10/01/2023",
+      endDate: "28/02/2023"
     },
     {
-      title: 'Estratégias de Precificação',
-      icon: LineChart,
-      priority: 'Média',
-      description: 'Revisão e otimização da estratégia de precificação para maximizar margens de lucro sem perder competitividade.',
-      metricLabel: 'Aumento de margem projetado',
-      metricValue: '8-12%',
-      metricSubtext: 'por produto',
-    },
+      title: "Diversificação de Receita",
+      description: "Desenvolvimento de novas linhas de produtos para diversificar fontes de receita",
+      status: "Em Andamento",
+      progress: 65,
+      startDate: "05/02/2023",
+      endDate: "30/05/2023"
+    }
   ];
 
-  const planItems = [
+  const treatmentPlans: TreatmentPlanItem[] = [
     {
-      title: 'Consultoria Financeira Especializada',
-      description: 'Sessões de consultoria com especialistas para implementar as recomendações de tratamento',
-      buttonText: 'Agendar Consulta',
-      buttonVariant: 'default',
+      title: "Plano Básico",
+      description: "Análise financeira inicial e recomendações básicas para melhorar a saúde financeira da sua empresa",
+      buttonText: "Selecionar",
+      buttonVariant: "outline"
     },
     {
-      title: 'Relatório Detalhado de Tratamento',
-      description: 'Documento abrangente com todas as estratégias e passos para implementação',
-      buttonText: 'Gerar Relatório',
-      buttonVariant: 'outline',
+      title: "Plano Intermediário",
+      description: "Análise detalhada, recomendações personalizadas e acompanhamento mensal por 6 meses",
+      buttonText: "Recomendado",
+      buttonVariant: "default"
     },
     {
-      title: 'Implementação Assistida',
-      description: 'Suporte contínuo durante a implementação das medidas de tratamento financeiro',
-      buttonText: 'Saiba Mais',
-      buttonVariant: 'outline',
-    },
+      title: "Plano Avançado",
+      description: "Análise completa, estratégia financeira de longo prazo e acompanhamento semanal por 12 meses",
+      buttonText: "Selecionar",
+      buttonVariant: "outline"
+    }
   ];
 
   return (
-    <TabsContent value="tratamento" className="animate-fade-in">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {treatmentCards.map((card, index) => (
-          <TreatmentCard
-            key={index}
-            title={card.title}
-            icon={card.icon}
-            priority={card.priority}
-            description={card.description}
-            metricLabel={card.metricLabel}
-            metricValue={card.metricValue}
-            metricSubtext={card.metricSubtext}
-          />
-        ))}
-      </div>
-
-      <TreatmentPlanCard items={planItems} />
-    </TabsContent>
+    <div className="space-y-8">
+      {!hasUploaded ? (
+        <Card className="p-6">
+          <h3 className="text-xl font-semibold mb-4">Carregar Dados Financeiros</h3>
+          <p className="text-muted-foreground mb-6">
+            Para iniciar o processo de tratamento financeiro, precisamos analisar seus dados financeiros atuais.
+            Faça o upload de seus relatórios financeiros ou conecte-se ao seu sistema ERP.
+          </p>
+          
+          <div className="border-2 border-dashed border-border rounded-lg p-8 text-center mb-4">
+            <Upload className="mx-auto h-10 w-10 text-muted-foreground mb-3" />
+            <h4 className="text-lg font-medium mb-2">Arraste e solte seus arquivos aqui</h4>
+            <p className="text-sm text-muted-foreground mb-4">Suportamos arquivos CSV, XLS, XLSX ou PDF</p>
+            <Button onClick={handleUpload} disabled={isUploading}>
+              {isUploading ? "Carregando..." : "Selecionar Arquivos"}
+            </Button>
+          </div>
+        </Card>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            {treatments.map((treatment, index) => (
+              <TreatmentCard 
+                key={index}
+                title={treatment.title}
+                description={treatment.description}
+                status={treatment.status}
+                progress={treatment.progress}
+                startDate={treatment.startDate}
+                endDate={treatment.endDate}
+              />
+            ))}
+          </div>
+          
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-semibold">Planos de Tratamento Disponíveis</h3>
+              <Button variant="link" className="flex items-center">
+                Ver todos <ChevronRight className="ml-1 h-4 w-4" />
+              </Button>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {treatmentPlans.map((plan, index) => (
+                <TreatmentPlanCard 
+                  key={index}
+                  title={plan.title}
+                  description={plan.description}
+                  buttonText={plan.buttonText}
+                  buttonVariant={plan.buttonVariant}
+                />
+              ))}
+            </div>
+          </div>
+          
+          <Card className="p-6 bg-muted/30">
+            <div className="flex flex-col md:flex-row md:items-center justify-between">
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Precisa de uma análise mais profunda?</h3>
+                <p className="text-muted-foreground mb-4 md:mb-0">
+                  Consulte com um de nossos especialistas financeiros para uma avaliação personalizada.
+                </p>
+              </div>
+              <Button className="flex items-center gap-2">
+                Agendar Consulta <ArrowRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </Card>
+        </>
+      )}
+    </div>
   );
 };
 
