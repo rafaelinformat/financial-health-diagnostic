@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { TabsContent } from '@/components/ui/tabs';
 import {
   Table,
@@ -11,42 +11,97 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
-import { Eye, CheckCircle, XCircle } from 'lucide-react';
+import { Eye, CheckCircle, XCircle, ChevronDown, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from '@/components/ui/collapsible';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
 
-// Sample treatment history data
-const treatmentHistoryData = [
-  {
-    id: '1',
-    date: '01/04/2025',
-    companyName: 'TECNO CHAPA',
-    reference: '2025',
-    classification: 'SAUDÁVEL',
-    treatmentType: 'REDUZIR DESPESAS OPERACIONAIS',
-    status: 'pending'
-  },
-  {
-    id: '2',
-    date: '30/03/2025',
-    companyName: 'TECNO CHAPA',
-    reference: '2024',
-    classification: 'SAUDÁVEL',
-    treatmentType: 'OTIMIZAÇÃO DE CAPITAL DE GIRO',
-    status: 'pending'
-  },
-  {
-    id: '3',
-    date: '30/03/2025',
-    companyName: 'TECNO CHAPA',
-    reference: '2023',
-    classification: 'SAUDÁVEL',
-    treatmentType: 'MELHORAR GESTÃO DE FLUXO DE CAIXA',
-    status: 'pending'
-  },
-];
+// Updated treatment history data organized by company
+const treatmentHistoryByCompany = {
+  'TECNO CHAPA': [
+    {
+      id: '1',
+      date: '01/04/2025',
+      companyName: 'TECNO CHAPA',
+      size: 'LTDA',
+      reference: '2025',
+      classification: 'SAUDÁVEL',
+      treatmentType: 'REDUZIR DESPESAS OPERACIONAIS',
+      status: 'pending'
+    },
+    {
+      id: '2',
+      date: '30/03/2025',
+      companyName: 'TECNO CHAPA LTDA',
+      size: '',
+      reference: '2024',
+      classification: 'SAUDÁVEL',
+      treatmentType: 'OTIMIZAÇÃO DE CAPITAL DE GIRO',
+      status: 'pending'
+    },
+    {
+      id: '3',
+      date: '30/03/2025',
+      companyName: 'TECNO CHAPA',
+      size: 'LTDA',
+      reference: '2023',
+      classification: 'SAUDÁVEL',
+      treatmentType: 'MELHORAR GESTÃO DE FLUXO DE CAIXA',
+      status: 'pending'
+    },
+  ],
+  'TECNO MONTAGENS': [
+    {
+      id: '4',
+      date: '01/04/2025',
+      companyName: 'TECNO MONTAGENS LTDA',
+      size: '',
+      reference: '2025',
+      classification: 'SAUDÁVEL',
+      treatmentType: 'REDUZIR DESPESAS OPERACIONAIS',
+      status: 'pending'
+    },
+    {
+      id: '5',
+      date: '30/03/2025',
+      companyName: 'TECNO MONTAGENS LTDA',
+      size: '',
+      reference: '2024',
+      classification: 'SAUDÁVEL',
+      treatmentType: 'OTIMIZAÇÃO DE CAPITAL DE GIRO',
+      status: 'pending'
+    },
+    {
+      id: '6',
+      date: '30/03/2025',
+      companyName: 'TECNO MONTAGENS LTDA',
+      size: '',
+      reference: '2023',
+      classification: 'SAUDÁVEL',
+      treatmentType: 'MELHORAR GESTÃO DE FLUXO DE CAIXA',
+      status: 'pending'
+    },
+  ],
+};
 
-const HistoryTab: React.FC = () => {
+// Items per page for pagination
+const ITEMS_PER_PAGE = 2;
+
+const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: string, treatments: any[] }) => {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleViewDetails = (id: string) => {
     navigate(`/financial-treatment?tab=tratamento-detalhado&id=${id}`);
@@ -75,17 +130,33 @@ const HistoryTab: React.FC = () => {
     }
   };
 
+  // Calculate pagination
+  const totalPages = Math.ceil(treatments.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const currentItems = treatments.slice(startIndex, endIndex);
+
   return (
-    <TabsContent value="historico">
-      <div className="glass-card p-6 animate-fade-in">
-        <h2 className="text-2xl font-semibold mb-6">Histórico de Tratamento</h2>
-        <p className="text-muted-foreground mb-8">
-          Acompanhe o histórico de tratamentos financeiros aplicados e seus resultados.
-        </p>
-        
-        <div className="overflow-x-auto">
+    <Collapsible
+      open={isOpen}
+      onOpenChange={setIsOpen}
+      className="mb-6 glass-card rounded-lg overflow-hidden"
+    >
+      <CollapsibleTrigger asChild>
+        <div className="flex items-center justify-between p-4 cursor-pointer bg-muted/30 rounded-t-lg">
+          <h3 className="text-lg font-semibold">Empresa {companyName}</h3>
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-muted-foreground">{treatments.length} tratamentos</span>
+            {isOpen ? 
+              <ChevronDown className="h-5 w-5" /> : 
+              <ChevronRight className="h-5 w-5" />
+            }
+          </div>
+        </div>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <div className="p-4">
           <Table>
-            <TableCaption>Lista de tratamentos financeiros por empresa</TableCaption>
             <TableHeader className="bg-muted/30">
               <TableRow>
                 <TableHead className="w-24">DATA</TableHead>
@@ -98,10 +169,13 @@ const HistoryTab: React.FC = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {treatmentHistoryData.map((treatment) => (
+              {currentItems.map((treatment) => (
                 <TableRow key={treatment.id}>
                   <TableCell>{treatment.date}</TableCell>
-                  <TableCell className="font-medium">{treatment.companyName}</TableCell>
+                  <TableCell className="font-medium">
+                    {treatment.companyName}
+                    {treatment.size && ` ${treatment.size}`}
+                  </TableCell>
                   <TableCell>{treatment.reference}</TableCell>
                   <TableCell className={getClassificationStyle(treatment.classification)}>
                     {treatment.classification}
@@ -144,6 +218,61 @@ const HistoryTab: React.FC = () => {
               ))}
             </TableBody>
           </Table>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <Pagination className="mt-4">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious 
+                    onClick={() => setCurrentPage(p => Math.max(1, p - 1))} 
+                    className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                  />
+                </PaginationItem>
+                
+                {Array.from({ length: totalPages }).map((_, i) => (
+                  <PaginationItem key={i}>
+                    <PaginationLink 
+                      isActive={currentPage === i + 1}
+                      onClick={() => setCurrentPage(i + 1)}
+                    >
+                      {i + 1}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
+                
+                <PaginationItem>
+                  <PaginationNext 
+                    onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} 
+                    className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          )}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+};
+
+const HistoryTab: React.FC = () => {
+  return (
+    <TabsContent value="historico">
+      <div className="glass-card p-6 animate-fade-in">
+        <h2 className="text-2xl font-semibold mb-6">Histórico de Tratamento</h2>
+        <p className="text-muted-foreground mb-8">
+          Acompanhe o histórico de tratamentos financeiros aplicados e seus resultados.
+        </p>
+        
+        <div className="space-y-6">
+          {Object.entries(treatmentHistoryByCompany).map(([company, treatments]) => (
+            <CompanyTreatmentTable 
+              key={company} 
+              companyName={company} 
+              treatments={treatments} 
+            />
+          ))}
         </div>
       </div>
     </TabsContent>
