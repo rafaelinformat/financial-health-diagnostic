@@ -19,6 +19,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import HealthCard from '@/components/HealthCard';
+import KpiCard from '@/components/KpiCard';
 
 const DiagnosticDetailExpanded = () => {
   const { id } = useParams();
@@ -35,7 +38,9 @@ const DiagnosticDetailExpanded = () => {
       analysisTo: '31/01/2025',
       requestedBy: 'Vitoria',
       status: 'SAUDÁVEL',
-      analysisYear: '2025'
+      analysisYear: '2025',
+      healthScore: 85,
+      healthStatus: 'Saúde Financeira Geral'
     },
     liquidityParameters: [
       {
@@ -251,7 +256,31 @@ const DiagnosticDetailExpanded = () => {
           </TabsList>
           
           <TabsContent value="diagnostico" className="animate-fade-in">
-            {/* Novo layout para Dados da Empresa baseado na imagem fornecida */}
+            {/* Novo componente HealthCard para o sumário de saúde financeira */}
+            <Card className="mb-8 border rounded-lg shadow-sm bg-white">
+              <CardContent className="p-6">
+                <div className="mb-4">
+                  <h2 className="text-xl font-bold">{diagnosticData.company.healthStatus}</h2>
+                  <div className="mt-2">
+                    <Progress 
+                      value={diagnosticData.company.healthScore} 
+                      className="h-2 bg-gray-200"
+                    />
+                  </div>
+                  <p className="text-muted-foreground mt-2">
+                    Sua empresa apresenta uma saúde financeira {
+                      diagnosticData.company.healthScore > 70 ? 'saudável' : 
+                      diagnosticData.company.healthScore > 40 ? 'comprometida' : 'em risco'
+                    }
+                  </p>
+                  <div className="mt-4">
+                    <h3 className="text-4xl font-bold">{diagnosticData.company.healthScore}%</h3>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            {/* Cartão de dados da empresa */}
             <Card className="mb-8 shadow-sm">
               <CardContent className="pt-6">
                 <div className="mb-4">
@@ -430,4 +459,3 @@ const DiagnosticDetailExpanded = () => {
 };
 
 export default DiagnosticDetailExpanded;
-
