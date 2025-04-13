@@ -99,8 +99,13 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
   const [isOpen, setIsOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleViewDiagnostic = (id: string) => {
-    navigate(`/financial-health/details/${id}`);
+  const handleViewDiagnostic = (id: string, reference: string, referenceMonth: string) => {
+    // Direciona para a página expandida se for janeiro de 2025
+    if (reference === '2025' && referenceMonth === 'JANEIRO') {
+      navigate(`/financial-health/details-expanded/${id}`);
+    } else {
+      navigate(`/financial-health/details/${id}`);
+    }
   };
 
   const getClassificationStyle = (classification: string) => {
@@ -169,7 +174,7 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
                     <Button 
                       size="sm" 
                       variant="outline" 
-                      onClick={() => handleViewDiagnostic(diagnostic.id)}
+                      onClick={() => handleViewDiagnostic(diagnostic.id, diagnostic.reference, diagnostic.referenceMonth)}
                       className="flex items-center gap-1"
                     >
                       <Eye className="h-4 w-4" />
