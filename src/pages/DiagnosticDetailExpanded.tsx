@@ -9,6 +9,16 @@ import {
   AccordionItem,
   AccordionTrigger
 } from '@/components/ui/accordion';
+import { CheckCircle } from 'lucide-react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const DiagnosticDetailExpanded = () => {
   const { id } = useParams();
@@ -23,7 +33,9 @@ const DiagnosticDetailExpanded = () => {
       sector: 'Indústria/Serviços (Corte e Dobra Metálica)',
       analysisFrom: '01/01/2025',
       analysisTo: '31/01/2025',
-      requestedBy: 'Vitoria'
+      requestedBy: 'Vitoria',
+      status: 'SAUDÁVEL',
+      analysisYear: '2025'
     },
     liquidityParameters: [
       {
@@ -208,13 +220,25 @@ const DiagnosticDetailExpanded = () => {
     </div>
   );
 
+  // Define styled cards for different indicator groups
+  const IndicatorCard = ({ title, children, className = "" }) => (
+    <Card className={`shadow-sm hover:shadow-md transition-shadow ${className}`}>
+      <CardHeader className="pb-2">
+        <CardTitle>{title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {children}
+      </CardContent>
+    </Card>
+  );
+
   return (
     <DashboardLayout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Diagnóstico Detalhado</h1>
+          <h1 className="text-3xl font-bold mb-2">Resultado do Diagnóstico de Saúde Financeira Detalhado</h1>
           <p className="text-muted-foreground mb-6">
-            Análise completa da saúde financeira da empresa
+            Detalhamento completo do tratamento financeiro recomendado com base na análise realizada.
           </p>
         </div>
 
@@ -227,91 +251,151 @@ const DiagnosticDetailExpanded = () => {
           </TabsList>
           
           <TabsContent value="diagnostico" className="animate-fade-in">
-            <div className="glass-card p-6 mb-8">
-              <h2 className="text-2xl font-bold mb-4">Dados da Empresa</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <p className="mb-2"><span className="font-semibold">Empresa:</span> {diagnosticData.company.name}</p>
-                  <p className="mb-2"><span className="font-semibold">Data de Criação:</span> {diagnosticData.company.creationDate}</p>
-                  <p className="mb-2"><span className="font-semibold">Idade da empresa:</span> {diagnosticData.company.age}</p>
+            {/* Novo layout para Dados da Empresa baseado na imagem fornecida */}
+            <Card className="mb-8 shadow-sm">
+              <CardContent className="pt-6">
+                <div className="mb-4">
+                  <h2 className="text-2xl font-bold mb-4">Exame de Risco de Falência</h2>
                 </div>
-                <div>
-                  <p className="mb-2"><span className="font-semibold">Setor de atuação:</span> {diagnosticData.company.sector}</p>
-                  <p className="mb-2"><span className="font-semibold">Período de análise:</span> {diagnosticData.company.analysisFrom} a {diagnosticData.company.analysisTo}</p>
-                  <p className="mb-2"><span className="font-semibold">Solicitado por:</span> {diagnosticData.company.requestedBy}</p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                  <div>
+                    <p className="text-muted-foreground text-sm mb-1">Empresa:</p>
+                    <p className="font-semibold">{diagnosticData.company.name}</p>
+                    
+                    <p className="text-muted-foreground text-sm mt-4 mb-1">Data de Criação da Empresa:</p>
+                    <p className="font-semibold">{diagnosticData.company.creationDate}</p>
+                    
+                    <p className="text-muted-foreground text-sm mt-4 mb-1">Setor:</p>
+                    <p className="font-semibold">{diagnosticData.company.sector}</p>
+                  </div>
+                  
+                  <div>
+                    <p className="text-muted-foreground text-sm mb-1">Data de análise dos dados:</p>
+                    <p className="font-semibold">{diagnosticData.company.analysisYear}</p>
+                    
+                    <p className="text-muted-foreground text-sm mt-4 mb-1">Idade da empresa:</p>
+                    <p className="font-semibold">{diagnosticData.company.age}</p>
+                    
+                    <p className="text-muted-foreground text-sm mt-4 mb-1">Solicitado por:</p>
+                    <p className="font-semibold">{diagnosticData.company.requestedBy}</p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center justify-center">
+                    <p className="text-muted-foreground text-sm mb-3">Status da Empresa</p>
+                    <Badge variant="outline" className="bg-green-500 text-white px-4 py-1 text-sm rounded-full">
+                      {diagnosticData.company.status}
+                    </Badge>
+                    <div className="mt-5">
+                      <CheckCircle className="h-16 w-16 text-green-500" />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </CardContent>
+            </Card>
 
-              <Accordion type="single" collapsible className="w-full mb-8">
-                <AccordionItem value="liquidez">
-                  <AccordionTrigger className="text-xl font-semibold py-4">Parâmetros de Liquidez</AccordionTrigger>
-                  <AccordionContent>
+            {/* Grid de cards de indicadores */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="liquidez" className="border rounded-lg overflow-hidden">
+                  <AccordionTrigger className="bg-muted/30 p-4 hover:no-underline hover:bg-muted/50">
+                    <h3 className="text-xl font-semibold text-left">Parâmetros de Liquidez</h3>
+                  </AccordionTrigger>
+                  <AccordionContent className="p-4 pt-4">
                     {renderIndicatorsTable(diagnosticData.liquidityParameters)}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="operacional">
-                  <AccordionTrigger className="text-xl font-semibold py-4">Atividades Operacionais</AccordionTrigger>
-                  <AccordionContent>
-                    {renderIndicatorsTable(diagnosticData.operationalActivities)}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="capital">
-                  <AccordionTrigger className="text-xl font-semibold py-4">Estrutura de Capital</AccordionTrigger>
-                  <AccordionContent>
-                    {renderIndicatorsTable(diagnosticData.capitalStructure)}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="juros">
-                  <AccordionTrigger className="text-xl font-semibold py-4">Cobertura de Juros</AccordionTrigger>
-                  <AccordionContent>
-                    {renderIndicatorsTable(diagnosticData.interestCoverage)}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="pagamentos">
-                  <AccordionTrigger className="text-xl font-semibold py-4">Pagamento do Principal</AccordionTrigger>
-                  <AccordionContent>
-                    {renderIndicatorsTable(diagnosticData.principalPayment)}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="eficiencia">
-                  <AccordionTrigger className="text-xl font-semibold py-4">Rentabilidade e Eficiência</AccordionTrigger>
-                  <AccordionContent>
-                    {renderIndicatorsTable(diagnosticData.profitabilityEfficiency)}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="margens">
-                  <AccordionTrigger className="text-xl font-semibold py-4">Margens</AccordionTrigger>
-                  <AccordionContent>
-                    {renderIndicatorsTable(diagnosticData.margins)}
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="retorno">
-                  <AccordionTrigger className="text-xl font-semibold py-4">Retorno sobre o Capital</AccordionTrigger>
-                  <AccordionContent>
-                    {renderIndicatorsTable(diagnosticData.returnOnCapital)}
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
 
-              <div className="bg-muted/20 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4">Conclusão</h3>
-                <p className="mb-4">
-                  Com base nos indicadores analisados, conclui-se que a empresa está em situação <span className="font-bold text-green-500">{diagnosticData.conclusion.status}</span>.
-                </p>
-                <h4 className="font-semibold mb-2">Principais Pontos positivos:</h4>
-                <ul className="list-disc pl-6 space-y-1">
-                  {diagnosticData.conclusion.positivePoints.map((point, index) => (
-                    <li key={index}>{point}</li>
-                  ))}
-                </ul>
-              </div>
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="operacional" className="border rounded-lg overflow-hidden">
+                  <AccordionTrigger className="bg-muted/30 p-4 hover:no-underline hover:bg-muted/50">
+                    <h3 className="text-xl font-semibold text-left">Atividades Operacionais</h3>
+                  </AccordionTrigger>
+                  <AccordionContent className="p-4 pt-4">
+                    {renderIndicatorsTable(diagnosticData.operationalActivities)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="capital" className="border rounded-lg overflow-hidden">
+                  <AccordionTrigger className="bg-muted/30 p-4 hover:no-underline hover:bg-muted/50">
+                    <h3 className="text-xl font-semibold text-left">Estrutura de Capital</h3>
+                  </AccordionTrigger>
+                  <AccordionContent className="p-4 pt-4">
+                    {renderIndicatorsTable(diagnosticData.capitalStructure)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="juros" className="border rounded-lg overflow-hidden">
+                  <AccordionTrigger className="bg-muted/30 p-4 hover:no-underline hover:bg-muted/50">
+                    <h3 className="text-xl font-semibold text-left">Cobertura de Juros</h3>
+                  </AccordionTrigger>
+                  <AccordionContent className="p-4 pt-4">
+                    {renderIndicatorsTable(diagnosticData.interestCoverage)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="pagamentos" className="border rounded-lg overflow-hidden">
+                  <AccordionTrigger className="bg-muted/30 p-4 hover:no-underline hover:bg-muted/50">
+                    <h3 className="text-xl font-semibold text-left">Pagamento do Principal</h3>
+                  </AccordionTrigger>
+                  <AccordionContent className="p-4 pt-4">
+                    {renderIndicatorsTable(diagnosticData.principalPayment)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="eficiencia" className="border rounded-lg overflow-hidden">
+                  <AccordionTrigger className="bg-muted/30 p-4 hover:no-underline hover:bg-muted/50">
+                    <h3 className="text-xl font-semibold text-left">Rentabilidade e Eficiência</h3>
+                  </AccordionTrigger>
+                  <AccordionContent className="p-4 pt-4">
+                    {renderIndicatorsTable(diagnosticData.profitabilityEfficiency)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="margens" className="border rounded-lg overflow-hidden">
+                  <AccordionTrigger className="bg-muted/30 p-4 hover:no-underline hover:bg-muted/50">
+                    <h3 className="text-xl font-semibold text-left">Margens</h3>
+                  </AccordionTrigger>
+                  <AccordionContent className="p-4 pt-4">
+                    {renderIndicatorsTable(diagnosticData.margins)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="retorno" className="border rounded-lg overflow-hidden">
+                  <AccordionTrigger className="bg-muted/30 p-4 hover:no-underline hover:bg-muted/50">
+                    <h3 className="text-xl font-semibold text-left">Retorno sobre o Capital</h3>
+                  </AccordionTrigger>
+                  <AccordionContent className="p-4 pt-4">
+                    {renderIndicatorsTable(diagnosticData.returnOnCapital)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+
+            <div className="bg-muted/20 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-4">Conclusão</h3>
+              <p className="mb-4">
+                Com base nos indicadores analisados, conclui-se que a empresa está em situação <span className="font-bold text-green-500">{diagnosticData.conclusion.status}</span>.
+              </p>
+              <h4 className="font-semibold mb-2">Principais Pontos positivos:</h4>
+              <ul className="list-disc pl-6 space-y-1">
+                {diagnosticData.conclusion.positivePoints.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
+              </ul>
             </div>
           </TabsContent>
           
@@ -346,3 +430,4 @@ const DiagnosticDetailExpanded = () => {
 };
 
 export default DiagnosticDetailExpanded;
+
