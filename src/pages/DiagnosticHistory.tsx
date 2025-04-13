@@ -38,6 +38,7 @@ const diagnosticDataByCompany = {
       companyName: 'TECNO CHAPA LDTA',
       size: 'LDTA',
       reference: '2025',
+      referenceMonth: 'JANEIRO',
       classification: 'SAUDÁVEL',
     },
     {
@@ -46,6 +47,7 @@ const diagnosticDataByCompany = {
       companyName: 'TECNO CHAPA',
       size: 'LDTA',
       reference: '2024',
+      referenceMonth: 'DEZEMBRO',
       classification: 'SAUDÁVEL',
     },
     {
@@ -54,6 +56,7 @@ const diagnosticDataByCompany = {
       companyName: 'TECNO CHAPA',
       size: 'LDTA',
       reference: '2023',
+      referenceMonth: 'NOVEMBRO',
       classification: 'SAUDÁVEL',
     },
   ],
@@ -64,6 +67,7 @@ const diagnosticDataByCompany = {
       companyName: 'TECNO MONTAGENS LDTA',
       size: 'LDTA',
       reference: '2025',
+      referenceMonth: 'JANEIRO',
       classification: 'SAUDÁVEL',
     },
     {
@@ -72,6 +76,7 @@ const diagnosticDataByCompany = {
       companyName: 'TECNO MONTAGENS',
       size: 'LDTA',
       reference: '2024',
+      referenceMonth: 'DEZEMBRO',
       classification: 'SAUDÁVEL',
     },
     {
@@ -80,6 +85,7 @@ const diagnosticDataByCompany = {
       companyName: 'TECNO MONTAGENS',
       size: 'LDTA',
       reference: '2023',
+      referenceMonth: 'NOVEMBRO',
       classification: 'SAUDÁVEL',
     },
   ],
@@ -143,6 +149,7 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
                 <TableHead>NOME</TableHead>
                 <TableHead>ENQUADRAMENTO</TableHead>
                 <TableHead>ANO DE REFERÊNCIA</TableHead>
+                <TableHead>MÊS DE REFERÊNCIA</TableHead>
                 <TableHead>CLASSIFICAÇÃO</TableHead>
                 <TableHead className="text-right">AÇÕES</TableHead>
               </TableRow>
@@ -154,6 +161,7 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
                   <TableCell className="font-medium">{diagnostic.companyName}</TableCell>
                   <TableCell>{diagnostic.size}</TableCell>
                   <TableCell>{diagnostic.reference}</TableCell>
+                  <TableCell>{diagnostic.referenceMonth}</TableCell>
                   <TableCell className={getClassificationStyle(diagnostic.classification)}>
                     {diagnostic.classification}
                   </TableCell>
