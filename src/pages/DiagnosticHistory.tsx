@@ -41,6 +41,15 @@ const diagnosticDataByCompany = {
       classification: 'SAUDÁVEL',
     },
     {
+      id: '7',
+      date: '30/03/2025',
+      companyName: 'TECNO CHAPA LDTA',
+      size: 'LDTA',
+      reference: '2025',
+      referenceMonth: 'FEVEREIRO',
+      classification: 'SAUDÁVEL',
+    },
+    {
       id: '2',
       date: '30/03/2025',
       companyName: 'TECNO CHAPA',
@@ -99,7 +108,6 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleViewDiagnostic = (id: string, reference: string, referenceMonth: string) => {
-    // Direciona para a página expandida se for janeiro de 2025
     if (reference === '2025' && referenceMonth === 'JANEIRO') {
       navigate(`/financial-health/details-expanded/${id}`);
     } else {
@@ -120,7 +128,6 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
     }
   };
 
-  // Calculate pagination
   const totalPages = Math.ceil(diagnostics.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
@@ -185,7 +192,6 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
             </TableBody>
           </Table>
 
-          {/* Pagination */}
           {totalPages > 1 && (
             <Pagination className="mt-4">
               <PaginationContent>
