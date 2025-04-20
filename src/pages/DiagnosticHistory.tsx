@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -29,7 +28,6 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination';
 
-// Updated diagnostic data organized by company
 const diagnosticDataByCompany = {
   'TECNO CHAPA': [
     {
@@ -100,13 +98,10 @@ const diagnosticDataByCompany = {
   ],
 };
 
-// Items per page for pagination
-const ITEMS_PER_PAGE = 2;
-
 const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: string, diagnostics: any[] }) => {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [currentPage, setCurrentPage] = React.useState(1);
 
   const handleViewDiagnostic = (id: string, reference: string, referenceMonth: string) => {
     if (reference === '2025' && referenceMonth === 'JANEIRO') {
@@ -131,9 +126,9 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
     }
   };
 
-  const totalPages = Math.ceil(diagnostics.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const totalPages = Math.ceil(diagnostics.length / 2);
+  const startIndex = (currentPage - 1) * 2;
+  const endIndex = startIndex + 2;
   const currentItems = diagnostics.slice(startIndex, endIndex);
 
   return (
@@ -299,4 +294,3 @@ const DiagnosticHistory = () => {
 };
 
 export default DiagnosticHistory;
-
