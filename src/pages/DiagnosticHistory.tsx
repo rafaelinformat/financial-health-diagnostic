@@ -109,7 +109,7 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
     } else if (reference === '2025' && referenceMonth === 'FEVEREIRO') {
       navigate(`/financial-health/details-feb/${id}`);
     } else if (reference === '2024' && referenceMonth === 'DEZEMBRO') {
-      navigate(`/financial-health/details-dec/${id}`);
+      navigate(`/financial-health/details-dec-2024/${id}`);
     } else {
       navigate(`/financial-health/details/${id}`);
     }
