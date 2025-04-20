@@ -13,10 +13,6 @@ import { CheckCircle } from 'lucide-react';
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -264,7 +260,7 @@ const DiagnosticDetailFeb = () => {
             <tr key={index} className="border-b hover:bg-muted/20">
               <td className="border p-2 font-medium">{item.indicator}</td>
               <td className="border p-2">{item.value}</td>
-              <td className="border p-2">{item.interpretation || '-'}</td>
+              <td className="border p-2">{'-'}</td> 
               <td className="border p-2">{item.analysis}</td>
             </tr>
           ))}
@@ -289,7 +285,7 @@ const DiagnosticDetailFeb = () => {
             <tr key={index} className="border-b hover:bg-muted/20">
               <td className="border p-2 font-medium">{item.indicator}</td>
               <td className="border p-2">{item.value}</td>
-              <td className="border p-2">{item.interpretation || '-'}</td>
+              <td className="border p-2">{'-'}</td>
               <td className="border p-2">{item.analysis}</td>
             </tr>
           ))}
@@ -314,7 +310,7 @@ const DiagnosticDetailFeb = () => {
             <tr key={index} className="border-b hover:bg-muted/20">
               <td className="border p-2 font-medium">{item.indicator}</td>
               <td className="border p-2">{item.value}</td>
-              <td className="border p-2">{item.interpretation || '-'}</td>
+              <td className="border p-2">{'-'}</td>
               <td className="border p-2">{item.analysis}</td>
             </tr>
           ))}
@@ -339,7 +335,7 @@ const DiagnosticDetailFeb = () => {
             <tr key={index} className="border-b hover:bg-muted/20">
               <td className="border p-2 font-medium">{item.indicator}</td>
               <td className="border p-2">{item.value}</td>
-              <td className="border p-2">{item.interpretation || '-'}</td>
+              <td className="border p-2">{'-'}</td>
               <td className="border p-2">{item.analysis}</td>
             </tr>
           ))}
@@ -364,7 +360,7 @@ const DiagnosticDetailFeb = () => {
             <tr key={index} className="border-b hover:bg-muted/20">
               <td className="border p-2 font-medium">{item.indicator}</td>
               <td className="border p-2">{item.value}</td>
-              <td className="border p-2">{item.interpretation || '-'}</td>
+              <td className="border p-2">{'-'}</td>
               <td className="border p-2">{item.analysis}</td>
             </tr>
           ))}
@@ -389,7 +385,7 @@ const DiagnosticDetailFeb = () => {
             <tr key={index} className="border-b hover:bg-muted/20">
               <td className="border p-2 font-medium">{item.indicator}</td>
               <td className="border p-2">{item.value}</td>
-              <td className="border p-2">{item.interpretation || '-'}</td>
+              <td className="border p-2">{'-'}</td>
               <td className="border p-2">{item.analysis}</td>
             </tr>
           ))}
@@ -551,7 +547,6 @@ const DiagnosticDetailFeb = () => {
               <p className="mb-4">
                 Com base nos indicadores analisados, conclui-se que a empresa está em situação <span className="font-bold text-green-500">{diagnosticData.conclusion.status}</span>.
               </p>
-              <h4 className="font-semibold mb-2">Principais Pontos positivos:</h4>
               <ul className="list-disc pl-6 space-y-1">
                 {diagnosticData.conclusion.positivePoints.map((point, index) => (
                   <li key={index}>{point}</li>
@@ -595,4 +590,3 @@ const DiagnosticDetailFeb = () => {
 };
 
 export default DiagnosticDetailFeb;
-

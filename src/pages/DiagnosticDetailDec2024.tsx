@@ -13,8 +13,8 @@ import { CheckCircle } from 'lucide-react';
 import {
   Card,
   CardContent,
-  Badge,
 } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const DiagnosticDetailDec2024 = () => {
   const navigate = useNavigate();
@@ -599,4 +599,3 @@ const DiagnosticDetailDec2024 = () => {
 };
 
 export default DiagnosticDetailDec2024;
-
