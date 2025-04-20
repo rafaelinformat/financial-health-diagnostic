@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,8 +13,7 @@ import Account from "./pages/Account";
 import HelpCenter from "./pages/HelpCenter";
 import DiagnosticHistory from "./pages/DiagnosticHistory";
 import DiagnosticDetail from "./pages/DiagnosticDetail";
-// Remove the import of DiagnosticDetailExpanded since the file doesn't exist
-// import DiagnosticDetailExpanded from "./pages/DiagnosticDetailExpanded";
+import DiagnosticDetailDec from './pages/DiagnosticDetailDec';
 import DiagnosticDetailed from "./pages/DiagnosticDetailed";
 import NotFound from "./pages/NotFound";
 import DiagnosticDetailFeb from './pages/DiagnosticDetailFeb';
@@ -36,8 +34,8 @@ const App = () => (
           <Route path="/financial-health" element={<FinancialHealth />} />
           <Route path="/financial-health/history" element={<DiagnosticHistory />} />
           <Route path="/financial-health/details/:id" element={<DiagnosticDetail />} />
-          {/* <Route path="/financial-health/details-expanded/:id" element={<DiagnosticDetailExpanded />} /> */}
           <Route path="/financial-health/details-feb/:id" element={<DiagnosticDetailFeb />} />
+          <Route path="/financial-health/details-dec/:id" element={<DiagnosticDetailDec />} />
           <Route path="/financial-health/detailed" element={<DiagnosticDetailed />} />
           <Route path="/financial-treatment" element={<FinancialTreatment />} />
           <Route path="/monitoring" element={<Monitoring />} />
