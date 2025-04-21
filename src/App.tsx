@@ -14,11 +14,11 @@ import Account from "./pages/Account";
 import HelpCenter from "./pages/HelpCenter";
 import DiagnosticHistory from "./pages/DiagnosticHistory";
 import DiagnosticDetail from "./pages/DiagnosticDetail";
-// Removed import DiagnosticDetailExpanded because it does not exist
 import DiagnosticDetailed from "./pages/DiagnosticDetailed";
 import NotFound from "./pages/NotFound";
 import DiagnosticDetailFeb from './pages/DiagnosticDetailFeb';
-import DiagnosticDetailDec2024 from './pages/DiagnosticDetailDec2024';  // new page import
+import DiagnosticDetailDec2024 from './pages/DiagnosticDetailDec2024';
+import DiagnosticDetailNov2023 from './pages/DiagnosticDetailNov2023';
 
 const queryClient = new QueryClient();
 
@@ -37,7 +37,8 @@ const App = () => (
           <Route path="/financial-health/history" element={<DiagnosticHistory />} />
           <Route path="/financial-health/details/:id" element={<DiagnosticDetail />} />
           <Route path="/financial-health/details-feb/:id" element={<DiagnosticDetailFeb />} />
-          <Route path="/financial-health/details-dec-2024/:id" element={<DiagnosticDetailDec2024 />} /> {/* new route */}
+          <Route path="/financial-health/details-dec-2024/:id" element={<DiagnosticDetailDec2024 />} />
+          <Route path="/financial-health/details-nov-2023/:id" element={<DiagnosticDetailNov2023 />} />
           <Route path="/financial-health/detailed" element={<DiagnosticDetailed />} />
           <Route path="/financial-treatment" element={<FinancialTreatment />} />
           <Route path="/monitoring" element={<Monitoring />} />
@@ -51,4 +52,3 @@ const App = () => (
 );
 
 export default App;
-
