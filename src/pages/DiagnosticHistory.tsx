@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -110,6 +111,8 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
       navigate(`/financial-health/details-feb/${id}`);
     } else if (reference === '2024' && referenceMonth === 'DEZEMBRO') {
       navigate(`/financial-health/details-dec-2024/${id}`);
+    } else if (reference === '2023' && referenceMonth === 'NOVEMBRO') {
+      navigate(`/financial-health/details-nov-2023/${id}`);
     } else {
       navigate(`/financial-health/details/${id}`);
     }
