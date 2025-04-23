@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -78,6 +79,15 @@ const diagnosticDataByCompany = {
       classification: 'SAUDÁVEL',
     },
     {
+      id: '8',
+      date: '30/03/2025',
+      companyName: 'TECNO MONTAGENS',
+      size: 'LDTA',
+      reference: '2025',
+      referenceMonth: 'FEVEREIRO',
+      classification: 'SAUDÁVEL',
+    },
+    {
       id: '5',
       date: '30/03/2025',
       companyName: 'TECNO MONTAGENS',
@@ -91,17 +101,8 @@ const diagnosticDataByCompany = {
       date: '30/03/2025',
       companyName: 'TECNO MONTAGENS',
       size: 'LDTA',
-      reference: '2025',
-      referenceMonth: 'FEVEREIRO',
-      classification: 'SAUDÁVEL',
-    },
-    {
-      id: '8',
-      date: '30/03/2025',
-      companyName: 'TECNO MONTAGENS',
-      size: 'LDTA',
-      reference: '2025',
-      referenceMonth: 'FEVEREIRO',
+      reference: '2023',
+      referenceMonth: 'DEZEMBRO',
       classification: 'SAUDÁVEL',
     },
   ],
@@ -309,3 +310,4 @@ const DiagnosticHistory = () => {
 };
 
 export default DiagnosticHistory;
+
