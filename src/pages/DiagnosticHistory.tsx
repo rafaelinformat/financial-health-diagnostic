@@ -106,6 +106,8 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
   const handleViewDiagnostic = (id: string, reference: string, referenceMonth: string) => {
     if (companyName === 'TECNO CHAPA' && reference === '2025' && referenceMonth === 'JANEIRO') {
       navigate(`/financial-health/details-jan-2025/${id}`);
+    } else if (companyName === 'TECNO MONTAGENS' && reference === '2025' && referenceMonth === 'JANEIRO') {
+      navigate(`/financial-health/details-tecno-montagens/${id}`);
     } else if (reference === '2025' && referenceMonth === 'FEVEREIRO') {
       navigate(`/financial-health/details-feb/${id}`);
     } else if (reference === '2024' && referenceMonth === 'DEZEMBRO') {
