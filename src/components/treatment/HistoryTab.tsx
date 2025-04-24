@@ -126,6 +126,13 @@ const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: strin
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const currentItems = treatments.slice(startIndex, endIndex);
 
+  const isDetailsButtonDisabled = (treatment: any) => {
+    return treatment.companyName.includes('TECNO CHAPA') && 
+           treatment.reference === '2025' && 
+           treatment.referenceMonth === 'FEVEREIRO' &&
+           treatment.treatmentType === 'RESTRUTURAÇÃO FINNACEIRA EXTERNA';
+  };
+
   return (
     <Collapsible
       open={isOpen}
@@ -201,6 +208,7 @@ const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: strin
                       variant="outline" 
                       onClick={() => handleViewDetails(treatment.id, treatment)}
                       className="flex items-center gap-1"
+                      disabled={isDetailsButtonDisabled(treatment)}
                     >
                       <Eye className="h-4 w-4" />
                       <span>Ver detalhes</span>
