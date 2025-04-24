@@ -4,7 +4,6 @@ import { TabsContent } from '@/components/ui/tabs';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -36,8 +35,9 @@ const treatmentHistoryByCompany = {
       companyName: 'TECNO CHAPA',
       size: 'LTDA',
       reference: '2025',
+      referenceMonth: 'JANEIRO',
       classification: 'SAUDÁVEL',
-      treatmentType: 'REDUZIR DESPESAS OPERACIONAIS',
+      treatmentType: 'RESTRUTURAÇÃO FINNACEIRA EXTERNA',
       status: 'pending'
     },
     {
@@ -45,19 +45,21 @@ const treatmentHistoryByCompany = {
       date: '30/03/2025',
       companyName: 'TECNO CHAPA LTDA',
       size: '',
-      reference: '2024',
+      reference: '2025',
+      referenceMonth: 'FEVEREIRO',
       classification: 'SAUDÁVEL',
-      treatmentType: 'OTIMIZAÇÃO DE CAPITAL DE GIRO',
+      treatmentType: 'RESTRUTURAÇÃO FINANCEIRA INTERNA',
       status: 'pending'
     },
     {
       id: '3',
       date: '30/03/2025',
-      companyName: 'TECNO CHAPA',
-      size: 'LTDA',
-      reference: '2023',
+      companyName: 'TECNO CHAPA LTDA',
+      size: '',
+      reference: '2025',
+      referenceMonth: 'FEVEREIRO',
       classification: 'SAUDÁVEL',
-      treatmentType: 'MELHORAR GESTÃO DE FLUXO DE CAIXA',
+      treatmentType: 'OTIMIZAÇÃO DE RECEBIMENTO',
       status: 'pending'
     },
   ],
@@ -70,26 +72,6 @@ const treatmentHistoryByCompany = {
       reference: '2025',
       classification: 'SAUDÁVEL',
       treatmentType: 'REDUZIR DESPESAS OPERACIONAIS',
-      status: 'pending'
-    },
-    {
-      id: '5',
-      date: '30/03/2025',
-      companyName: 'TECNO MONTAGENS LTDA',
-      size: '',
-      reference: '2024',
-      classification: 'SAUDÁVEL',
-      treatmentType: 'OTIMIZAÇÃO DE CAPITAL DE GIRO',
-      status: 'pending'
-    },
-    {
-      id: '6',
-      date: '30/03/2025',
-      companyName: 'TECNO MONTAGENS LTDA',
-      size: '',
-      reference: '2023',
-      classification: 'SAUDÁVEL',
-      treatmentType: 'MELHORAR GESTÃO DE FLUXO DE CAIXA',
       status: 'pending'
     },
   ],
@@ -162,6 +144,7 @@ const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: strin
                 <TableHead className="w-24">DATA</TableHead>
                 <TableHead>EMPRESA</TableHead>
                 <TableHead>ANO DE REFERÊNCIA</TableHead>
+                <TableHead>MÊS DE REFERÊNCIA</TableHead>
                 <TableHead>CLASSIFICAÇÃO</TableHead>
                 <TableHead>TRATAMENTO</TableHead>
                 <TableHead>AÇÃO</TableHead>
@@ -177,6 +160,7 @@ const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: strin
                     {treatment.size && ` ${treatment.size}`}
                   </TableCell>
                   <TableCell>{treatment.reference}</TableCell>
+                  <TableCell>{treatment.referenceMonth}</TableCell>
                   <TableCell className={getClassificationStyle(treatment.classification)}>
                     {treatment.classification}
                   </TableCell>
@@ -280,3 +264,4 @@ const HistoryTab: React.FC = () => {
 };
 
 export default HistoryTab;
+
