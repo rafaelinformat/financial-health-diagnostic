@@ -28,17 +28,6 @@ import {
 const treatmentHistoryByCompany = {
   'TECNO CHAPA': [
     {
-      id: '1',
-      date: '01/04/2025',
-      companyName: 'TECNO CHAPA',
-      size: 'LTDA',
-      reference: '2025',
-      referenceMonth: 'JANEIRO',
-      classification: 'SAUDÁVEL',
-      treatmentType: 'RESTRUTURAÇÃO FINNACEIRA EXTERNA',
-      status: 'pending'
-    },
-    {
       id: '2',
       date: '30/03/2025',
       companyName: 'TECNO CHAPA LTDA',
