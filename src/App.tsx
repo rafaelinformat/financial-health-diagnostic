@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -39,10 +40,11 @@ const App = () => (
           <Route path="/financial-health/history" element={<DiagnosticHistory />} />
           <Route path="/financial-health/details/:id" element={<DiagnosticDetail />} />
           <Route path="/financial-health/details-jan-2025/:id" element={<DiagnosticDetailJan2025 />} />
-          <Route path="/financial-health/details-feb/:id" element={<DiagnosticDetailFeb2025 />} />
+          <Route path="/financial-health/details-feb/:id" element={<DiagnosticDetailFeb />} />
           <Route path="/financial-health/details-dec-2024/:id" element={<DiagnosticDetailDec2024 />} />
           <Route path="/financial-health/details-nov-2023/:id" element={<DiagnosticDetailNov2023 />} />
           <Route path="/financial-health/details-tecno-montagens/:id" element={<DiagnosticDetailTecnoMontagens />} />
+          <Route path="/financial-health/details-feb2025/:id" element={<DiagnosticDetailFeb2025 />} />
           <Route path="/financial-health/detailed" element={<DiagnosticDetailed />} />
           <Route path="/financial-treatment" element={<FinancialTreatment />} />
           <Route path="/monitoring" element={<Monitoring />} />
