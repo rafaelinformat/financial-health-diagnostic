@@ -50,18 +50,6 @@ const treatmentHistoryByCompany = {
       status: 'pending'
     },
   ],
-  'TECNO MONTAGENS': [
-    {
-      id: '4',
-      date: '01/04/2025',
-      companyName: 'TECNO MONTAGENS LTDA',
-      size: '',
-      reference: '2025',
-      classification: 'SAUDÁVEL',
-      treatmentType: 'REDUZIR DESPESAS OPERACIONAIS',
-      status: 'pending'
-    },
-  ],
 };
 
 const ITEMS_PER_PAGE = 2;
