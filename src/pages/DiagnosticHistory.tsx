@@ -119,8 +119,8 @@ const DiagnosticHistoryTable = ({ companyName, diagnostics }: { companyName: str
       navigate(`/financial-health/details-tecno-montagens/${id}`);
     } else if (companyName === 'TECNO MONTAGENS' && reference === '2025' && referenceMonth === 'FEVEREIRO') {
       navigate(`/financial-health/details-feb2025/${id}`);
-    } else if (reference === '2024' && referenceMonth === 'DEZEMBRO') {
-      navigate(`/financial-health/details-dec-2024/${id}`);
+    } else if (companyName === 'TECNO MONTAGENS' && reference === '2024' && referenceMonth === 'DEZEMBRO') {
+      navigate(`/financial-health/details-tecno-montagens-dec-2024/${id}`);
     } else if (reference === '2023' && referenceMonth === 'NOVEMBRO') {
       navigate(`/financial-health/details-nov-2023/${id}`);
     } else {
