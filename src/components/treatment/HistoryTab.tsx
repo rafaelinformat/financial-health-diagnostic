@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { TabsContent } from '@/components/ui/tabs';
 import {
@@ -26,7 +25,6 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination';
 
-// Updated treatment history data organized by company
 const treatmentHistoryByCompany = {
   'TECNO CHAPA': [
     {
@@ -77,7 +75,6 @@ const treatmentHistoryByCompany = {
   ],
 };
 
-// Items per page for pagination
 const ITEMS_PER_PAGE = 2;
 
 const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: string, treatments: any[] }) => {
@@ -85,8 +82,15 @@ const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: strin
   const [isOpen, setIsOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleViewDetails = (id: string) => {
-    navigate(`/financial-treatment?tab=tratamento-detalhado&id=${id}`);
+  const handleViewDetails = (id: string, treatment: any) => {
+    if (treatment.companyName.includes('TECNO CHAPA') && 
+        treatment.reference === '2025' && 
+        treatment.referenceMonth === 'FEVEREIRO' &&
+        treatment.treatmentType === 'RESTRUTURAÇÃO FINANCEIRA INTERNA') {
+      navigate('/treatment-detail-feb-2025');
+    } else {
+      navigate(`/financial-treatment?tab=tratamento-detalhado&id=${id}`);
+    }
   };
 
   const handleApplyTreatment = (id: string) => {
@@ -112,7 +116,6 @@ const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: strin
     }
   };
 
-  // Calculate pagination
   const totalPages = Math.ceil(treatments.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
@@ -191,7 +194,7 @@ const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: strin
                     <Button 
                       size="sm" 
                       variant="outline" 
-                      onClick={() => handleViewDetails(treatment.id)}
+                      onClick={() => handleViewDetails(treatment.id, treatment)}
                       className="flex items-center gap-1"
                     >
                       <Eye className="h-4 w-4" />
@@ -203,7 +206,6 @@ const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: strin
             </TableBody>
           </Table>
 
-          {/* Pagination */}
           {totalPages > 1 && (
             <Pagination className="mt-4">
               <PaginationContent>
@@ -264,4 +266,3 @@ const HistoryTab: React.FC = () => {
 };
 
 export default HistoryTab;
-
