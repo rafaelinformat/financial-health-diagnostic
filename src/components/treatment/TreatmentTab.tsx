@@ -21,7 +21,7 @@ const TreatmentTab = () => {
   const handleUpload = () => {
     setIsUploading(true);
     setTimeout(() => {
-      setIsUploading(false);
+      setIsLoading(false);
       setHasUploaded(true);
       toast.success('Dados financeiros carregados com sucesso!');
     }, 1500);
@@ -31,7 +31,7 @@ const TreatmentTab = () => {
     {
       title: "Gestão de Fluxo de Caixa",
       description: "Implementação de sistema de controle diário de fluxo de caixa para evitar problemas de liquidez",
-      status: "Em Andamento",
+      statusText: "Em Andamento",
       progress: 35,
       startDate: "15/03/2023",
       endDate: "15/06/2023"
@@ -39,7 +39,7 @@ const TreatmentTab = () => {
     {
       title: "Redução de Custos Operacionais",
       description: "Análise e redução de despesas operacionais em 15% nos próximos 60 dias",
-      status: "Não Iniciado",
+      statusText: "Não Iniciado",
       progress: 0,
       startDate: "Pendente",
       endDate: "Pendente"
@@ -47,7 +47,7 @@ const TreatmentTab = () => {
     {
       title: "Renegociação de Dívidas",
       description: "Estratégia para renegociação de dívidas com fornecedores e instituições financeiras",
-      status: "Concluído",
+      statusText: "Concluído",
       progress: 100,
       startDate: "10/01/2023",
       endDate: "28/02/2023"
@@ -55,7 +55,7 @@ const TreatmentTab = () => {
     {
       title: "Diversificação de Receita",
       description: "Desenvolvimento de novas linhas de produtos para diversificar fontes de receita",
-      status: "Em Andamento",
+      statusText: "Em Andamento",
       progress: 65,
       startDate: "05/02/2023",
       endDate: "30/05/2023"
@@ -110,7 +110,7 @@ const TreatmentTab = () => {
                 key={index}
                 title={treatment.title}
                 description={treatment.description}
-                status={treatment.status}
+                statusText={treatment.statusText}
                 progress={treatment.progress}
                 startDate={treatment.startDate}
                 endDate={treatment.endDate}
@@ -130,7 +130,7 @@ const TreatmentTab = () => {
               {treatmentPlans.map((plan, index) => (
                 <TreatmentPlanCard 
                   key={index}
-                  title={plan.title}
+                  name={plan.title}
                   description={plan.description}
                   buttonText={plan.buttonText}
                   buttonVariant={plan.buttonVariant}
