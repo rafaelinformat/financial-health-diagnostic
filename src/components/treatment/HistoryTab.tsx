@@ -86,7 +86,12 @@ const CompanyTreatmentTable = ({ companyName, treatments }: { companyName: strin
     if (treatment.companyName.includes('TECNO CHAPA') && 
         treatment.reference === '2025' && 
         treatment.referenceMonth === 'FEVEREIRO' &&
-        treatment.treatmentType === 'RESTRUTURAÇÃO FINANCEIRA INTERNA') {
+        treatment.treatmentType === 'OTIMIZAÇÃO DE RECEBIMENTO') {
+      navigate('/treatment-detail-receivables-feb-2025');
+    } else if (treatment.companyName.includes('TECNO CHAPA') && 
+               treatment.reference === '2025' && 
+               treatment.referenceMonth === 'FEVEREIRO' &&
+               treatment.treatmentType === 'RESTRUTURAÇÃO FINANCEIRA INTERNA') {
       navigate('/treatment-detail-feb-2025');
     } else {
       navigate(`/financial-treatment?tab=tratamento-detalhado&id=${id}`);

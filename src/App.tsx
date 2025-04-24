@@ -23,6 +23,7 @@ import DiagnosticDetailTecnoMontagens from './pages/DiagnosticDetailTecnoMontage
 import DiagnosticDetailFeb2025 from './pages/DiagnosticDetailFeb2025';
 import DiagnosticDetailTecnoMontagensDec2024 from './pages/DiagnosticDetailTecnoMontagensDec2024';
 import TreatmentDetailFeb2025 from './pages/TreatmentDetailFeb2025';
+import TreatmentDetailReceivablesFeb2025 from './pages/TreatmentDetailReceivablesFeb2025';
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/help" element={<HelpCenter />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/treatment-detail-feb-2025" element={<TreatmentDetailFeb2025 />} />
+          <Route path="/treatment-detail-receivables-feb-2025" element={<TreatmentDetailReceivablesFeb2025 />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
