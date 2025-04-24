@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Eye } from 'lucide-react';
@@ -37,16 +36,25 @@ const DiagnosticHistoryTable: React.FC<DiagnosticHistoryTableProps> = ({ company
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const handleViewDiagnostic = (id: string, reference: string, referenceMonth: string) => {
-    if (companyName === 'TECNO CHAPA' && reference === '2025' && referenceMonth === 'JANEIRO') {
+  const handleViewDiagnostic = (id: string, diagnostic: DiagnosticData) => {
+    if (companyName === 'TECNO CHAPA' && 
+        diagnostic.reference === '2025' && 
+        diagnostic.referenceMonth === 'JANEIRO') {
       navigate(`/financial-health/details-jan-2025/${id}`);
-    } else if (companyName === 'TECNO MONTAGENS' && reference === '2025' && referenceMonth === 'JANEIRO') {
-      navigate(`/financial-health/details-tecno-montagens/${id}`);
-    } else if (companyName === 'TECNO MONTAGENS' && reference === '2025' && referenceMonth === 'FEVEREIRO') {
+    } else if (companyName === 'TECNO CHAPA' && 
+               diagnostic.reference === '2025' && 
+               diagnostic.referenceMonth === 'FEVEREIRO') {
       navigate(`/financial-health/details-feb2025/${id}`);
-    } else if (companyName === 'TECNO MONTAGENS' && reference === '2024' && referenceMonth === 'DEZEMBRO') {
+    } else if (companyName === 'TECNO MONTAGENS' && 
+               diagnostic.reference === '2025' && 
+               diagnostic.referenceMonth === 'JANEIRO') {
+      navigate(`/financial-health/details-tecno-montagens/${id}`);
+    } else if (companyName === 'TECNO MONTAGENS' && 
+               diagnostic.reference === '2024' && 
+               diagnostic.referenceMonth === 'DEZEMBRO') {
       navigate(`/financial-health/details-tecno-montagens-dec-2024/${id}`);
-    } else if (reference === '2023' && referenceMonth === 'NOVEMBRO') {
+    } else if (diagnostic.reference === '2023' && 
+               diagnostic.referenceMonth === 'NOVEMBRO') {
       navigate(`/financial-health/details-nov-2023/${id}`);
     } else {
       navigate(`/financial-health/details/${id}`);
@@ -113,7 +121,7 @@ const DiagnosticHistoryTable: React.FC<DiagnosticHistoryTableProps> = ({ company
                     <Button 
                       size="sm" 
                       variant="outline" 
-                      onClick={() => handleViewDiagnostic(diagnostic.id, diagnostic.reference, diagnostic.referenceMonth)}
+                      onClick={() => handleViewDiagnostic(diagnostic.id, diagnostic)}
                       className="flex items-center gap-1"
                     >
                       <Eye className="h-4 w-4" />

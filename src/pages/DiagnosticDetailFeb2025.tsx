@@ -38,7 +38,7 @@ const DiagnosticDetailFeb2025 = () => {
                 <div>
                   <p className="text-sm mb-2">
                     <span className="font-semibold">Empresa:</span><br />
-                    TECNO MONTAGENS SOLUÇÕES DE ENGENHARIA
+                    TECNO CHAPA SOLUCOES EM CORTE E DOBRA LTDA
                   </p>
                   <p className="text-sm mb-2">
                     <span className="font-semibold">Data de Criação da Empresa:</span><br />
@@ -46,25 +46,21 @@ const DiagnosticDetailFeb2025 = () => {
                   </p>
                   <p className="text-sm">
                     <span className="font-semibold">Setor:</span><br />
-                    Industrial – Montagens e Engenharia
+                    Indústria/Serviços (Corte e Dobra Metálica)
                   </p>
                 </div>
                 <div>
                   <p className="text-sm mb-2">
-                    <span className="font-semibold">Data de análise dos dados:</span><br />
-                    2025
+                    <span className="font-semibold">Período de análise:</span><br />
+                    01/02/2025 a 28/02/2025
                   </p>
                   <p className="text-sm mb-2">
                     <span className="font-semibold">Idade da empresa:</span><br />
                     2 anos
                   </p>
-                  <p className="text-sm mb-2">
-                    <span className="font-semibold">Período de análise:</span><br />
-                    01/02/2025 a 31/02/2025
-                  </p>
                   <p className="text-sm">
                     <span className="font-semibold">Solicitado por:</span><br />
-                    Vitória
+                    Vitoria
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
@@ -96,21 +92,21 @@ const DiagnosticDetailFeb2025 = () => {
                         <tbody>
                           <tr>
                             <td className="border border-gray-300 p-2">Liquidez Corrente</td>
-                            <td className="border border-gray-300 p-2">3,83</td>
-                            <td className="border border-gray-300 p-2">≥ 1,5</td>
-                            <td className="border border-gray-300 p-2">Alta capacidade de pagamento de curto prazo. Muito saudável.</td>
+                            <td className="border border-gray-300 p-2">24,48</td>
+                            <td className="border border-gray-300 p-2">&gt; 1,5</td>
+                            <td className="border border-gray-300 p-2">Muito saudável. A empresa possui ampla cobertura de obrigações de curto prazo.</td>
                           </tr>
                           <tr className="bg-gray-50">
                             <td className="border border-gray-300 p-2">Liquidez Seca</td>
-                            <td className="border border-gray-300 p-2">3,83</td>
-                            <td className="border border-gray-300 p-2">≥ 1,2</td>
-                            <td className="border border-gray-300 p-2">Estoque irrelevante. Resultado saudável.</td>
+                            <td className="border border-gray-300 p-2">17,44</td>
+                            <td className="border border-gray-300 p-2">&gt; 1,0</td>
+                            <td className="border border-gray-300 p-2">Excelente. Mesmo sem estoques, empresa permanece muito solvente.</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-300 p-2">Liquidez Imediata</td>
-                            <td className="border border-gray-300 p-2">1,39</td>
-                            <td className="border border-gray-300 p-2">≥ 0,8</td>
-                            <td className="border border-gray-300 p-2">Boa liquidez imediata. Garante caixa para emergências.</td>
+                            <td className="border border-gray-300 p-2">7,12</td>
+                            <td className="border border-gray-300 p-2">&gt; 0,5</td>
+                            <td className="border border-gray-300 p-2">Excelente liquidez imediata.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -134,27 +130,27 @@ const DiagnosticDetailFeb2025 = () => {
                         <tbody>
                           <tr>
                             <td className="border border-gray-300 p-2">Endividamento Geral</td>
-                            <td className="border border-gray-300 p-2">0,25</td>
-                            <td className="border border-gray-300 p-2">≤ 0,60</td>
-                            <td className="border border-gray-300 p-2">Endividamento muito baixo.</td>
+                            <td className="border border-gray-300 p-2">14,51%</td>
+                            <td className="border border-gray-300 p-2">&lt; 50%</td>
+                            <td className="border border-gray-300 p-2">Muito saudável. Baixa dependência de capital de terceiros.</td>
                           </tr>
                           <tr className="bg-gray-50">
-                            <td className="border border-gray-300 p-2">Cap. Terceiros / PL</td>
-                            <td className="border border-gray-300 p-2">0,33</td>
-                            <td className="border border-gray-300 p-2">≤ 1,0</td>
-                            <td className="border border-gray-300 p-2">Baixa dependência de terceiros.</td>
+                            <td className="border border-gray-300 p-2">Passivo / PL</td>
+                            <td className="border border-gray-300 p-2">0,17</td>
+                            <td className="border border-gray-300 p-2">&lt; 1,0</td>
+                            <td className="border border-gray-300 p-2">Boa estrutura de capital próprio.</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-300 p-2">Composição do Endividamento</td>
-                            <td className="border border-gray-300 p-2">0,62</td>
-                            <td className="border border-gray-300 p-2">≤ 0,7</td>
-                            <td className="border border-gray-300 p-2">Predominância de CP. Atenção à rolagem.</td>
+                            <td className="border border-gray-300 p-2">26,77%</td>
+                            <td className="border border-gray-300 p-2">&lt; 50%</td>
+                            <td className="border border-gray-300 p-2">Prevalência de passivos de longo prazo.</td>
                           </tr>
                           <tr className="bg-gray-50">
                             <td className="border border-gray-300 p-2">Alavancagem Financeira</td>
-                            <td className="border border-gray-300 p-2">1,33</td>
-                            <td className="border border-gray-300 p-2">1,5 a 2,0</td>
-                            <td className="border border-gray-300 p-2">Empresa conservadora.</td>
+                            <td className="border border-gray-300 p-2">1,17</td>
+                            <td className="border border-gray-300 p-2">&lt; 2,0</td>
+                            <td className="border border-gray-300 p-2">Alavancagem sob controle.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -178,15 +174,15 @@ const DiagnosticDetailFeb2025 = () => {
                         <tbody>
                           <tr>
                             <td className="border border-gray-300 p-2">Dívida Líquida / EBITDA</td>
-                            <td className="border border-gray-300 p-2">-1,54</td>
-                            <td className="border border-gray-300 p-2">≤ 2,5</td>
-                            <td className="border border-gray-300 p-2">Caixa maior que dívida.</td>
+                            <td className="border border-gray-300 p-2">-2,88</td>
+                            <td className="border border-gray-300 p-2">&lt; 3,0</td>
+                            <td className="border border-gray-300 p-2">Caixa excedente à dívida.</td>
                           </tr>
                           <tr className="bg-gray-50">
                             <td className="border border-gray-300 p-2">Dívida Líquida / PL</td>
-                            <td className="border border-gray-300 p-2">-0,16</td>
-                            <td className="border border-gray-300 p-2">≤ 1,0</td>
-                            <td className="border border-gray-300 p-2">Endividamento negativo.</td>
+                            <td className="border border-gray-300 p-2">-0,20</td>
+                            <td className="border border-gray-300 p-2">&lt; 1,0</td>
+                            <td className="border border-gray-300 p-2">Estrutura muito robusta financeiramente.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -210,53 +206,21 @@ const DiagnosticDetailFeb2025 = () => {
                         <tbody>
                           <tr>
                             <td className="border border-gray-300 p-2">Margem Bruta</td>
-                            <td className="border border-gray-300 p-2">83,99%</td>
-                            <td className="border border-gray-300 p-2">30% a 60%</td>
-                            <td className="border border-gray-300 p-2">Muito acima do esperado.</td>
+                            <td className="border border-gray-300 p-2">75,2%</td>
+                            <td className="border border-gray-300 p-2">&gt; 40%</td>
+                            <td className="border border-gray-300 p-2">Boa margem. Custos diretos bem controlados.</td>
                           </tr>
                           <tr className="bg-gray-50">
                             <td className="border border-gray-300 p-2">Margem Operacional</td>
-                            <td className="border border-gray-300 p-2">27,15%</td>
-                            <td className="border border-gray-300 p-2">15% a 30%</td>
-                            <td className="border border-gray-300 p-2">Boa margem.</td>
+                            <td className="border border-gray-300 p-2">70,5%</td>
+                            <td className="border border-gray-300 p-2">&gt; 15%</td>
+                            <td className="border border-gray-300 p-2">Excelente margem operacional.</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-300 p-2">Margem Líquida</td>
-                            <td className="border border-gray-300 p-2">27,15%</td>
-                            <td className="border border-gray-300 p-2">10% a 25%</td>
-                            <td className="border border-gray-300 p-2">Alta eficiência.</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="retorno-capital" className="border rounded-md">
-                    <AccordionTrigger className="text-lg font-medium px-4 py-3">
-                      Retorno sobre o Capital
-                    </AccordionTrigger>
-                    <AccordionContent className="px-4 py-3 text-sm">
-                      <table className="w-full table-auto border-collapse border border-gray-300 text-left">
-                        <thead>
-                          <tr className="bg-gray-100">
-                            <th className="border border-gray-300 p-2">Indicador</th>
-                            <th className="border border-gray-300 p-2">Valor Obtido</th>
-                            <th className="border border-gray-300 p-2">Valor Desejado</th>
-                            <th className="border border-gray-300 p-2">Análise do Indicador</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td className="border border-gray-300 p-2">ROA</td>
-                            <td className="border border-gray-300 p-2">7,69%</td>
-                            <td className="border border-gray-300 p-2">≥ 5%</td>
-                            <td className="border border-gray-300 p-2">Saudável.</td>
-                          </tr>
-                          <tr className="bg-gray-50">
-                            <td className="border border-gray-300 p-2">ROE</td>
-                            <td className="border border-gray-300 p-2">10,25%</td>
-                            <td className="border border-gray-300 p-2">≥ 10%</td>
-                            <td className="border border-gray-300 p-2">Boa geração de valor ao sócio.</td>
+                            <td className="border border-gray-300 p-2">70,5%</td>
+                            <td className="border border-gray-300 p-2">&gt; 10%</td>
+                            <td className="border border-gray-300 p-2">Lucratividade muito acima da média.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -284,33 +248,33 @@ const DiagnosticDetailFeb2025 = () => {
                         <tbody>
                           <tr>
                             <td className="border border-gray-300 p-2">PMR</td>
-                            <td className="border border-gray-300 p-2">30,41 dias</td>
-                            <td className="border border-gray-300 p-2">≤ 45 dias</td>
-                            <td className="border border-gray-300 p-2">Ciclo de recebimento eficiente.</td>
+                            <td className="border border-gray-300 p-2">53,40 dias</td>
+                            <td className="border border-gray-300 p-2">&lt; 45 dias</td>
+                            <td className="border border-gray-300 p-2">Acima do ideal. Concessão de prazos ou atrasos no recebimento.</td>
                           </tr>
                           <tr className="bg-gray-50">
                             <td className="border border-gray-300 p-2">PME</td>
-                            <td className="border border-gray-300 p-2">0,05 dias</td>
-                            <td className="border border-gray-300 p-2">≤ 30 dias</td>
-                            <td className="border border-gray-300 p-2">Estoque praticamente inexistente.</td>
+                            <td className="border border-gray-300 p-2">296,17 dias</td>
+                            <td className="border border-gray-300 p-2">&lt; 90 dias</td>
+                            <td className="border border-gray-300 p-2">Muito alto. Estoques parados comprometem o giro operacional.</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-300 p-2">PMP</td>
-                            <td className="border border-gray-300 p-2">12,86 dias</td>
-                            <td className="border border-gray-300 p-2">≥ 15 dias</td>
-                            <td className="border border-gray-300 p-2">Poder de negociação pode ser melhorado.</td>
+                            <td className="border border-gray-300 p-2">21,56 dias</td>
+                            <td className="border border-gray-300 p-2">&gt; 30 dias</td>
+                            <td className="border border-gray-300 p-2">Baixo. A empresa paga antes de receber dos clientes.</td>
                           </tr>
                           <tr className="bg-gray-50">
                             <td className="border border-gray-300 p-2">Ciclo Operacional</td>
-                            <td className="border border-gray-300 p-2">30,46 dias</td>
-                            <td className="border border-gray-300 p-2">—</td>
-                            <td className="border border-gray-300 p-2">Ciclo enxuto. Excelente.</td>
+                            <td className="border border-gray-300 p-2">349,57 dias</td>
+                            <td className="border border-gray-300 p-2">&lt; 120 dias</td>
+                            <td className="border border-gray-300 p-2">Muito longo. Excesso de capital preso no operacional.</td>
                           </tr>
                           <tr>
                             <td className="border border-gray-300 p-2">Ciclo de Caixa</td>
-                            <td className="border border-gray-300 p-2">17,60 dias</td>
-                            <td className="border border-gray-300 p-2">≤ 30 dias</td>
-                            <td className="border border-gray-300 p-2">Empresa antecipa recebíveis.</td>
+                            <td className="border border-gray-300 p-2">328,01 dias</td>
+                            <td className="border border-gray-300 p-2">&lt; 90 dias</td>
+                            <td className="border border-gray-300 p-2">Crítico. Necessário revisar capital de giro.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -334,9 +298,9 @@ const DiagnosticDetailFeb2025 = () => {
                         <tbody>
                           <tr>
                             <td className="border border-gray-300 p-2">Cobertura de Juros</td>
-                            <td className="border border-gray-300 p-2">156,17</td>
-                            <td className="border border-gray-300 p-2">≥ 2</td>
-                            <td className="border border-gray-300 p-2">Cobertura excepcional.</td>
+                            <td className="border border-gray-300 p-2">141,40x</td>
+                            <td className="border border-gray-300 p-2">&gt; 2,0</td>
+                            <td className="border border-gray-300 p-2">Excelente capacidade de gerar resultado para cobrir juros.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -360,21 +324,47 @@ const DiagnosticDetailFeb2025 = () => {
                         <tbody>
                           <tr>
                             <td className="border border-gray-300 p-2">Giro do Ativo Fixo</td>
-                            <td className="border border-gray-300 p-2">59,56</td>
-                            <td className="border border-gray-300 p-2">≥ 3,0</td>
-                            <td className="border border-gray-300 p-2">Excelente aproveitamento de ativos fixos.</td>
+                            <td className="border border-gray-300 p-2">1,69</td>
+                            <td className="border border-gray-300 p-2">&gt; 1,5</td>
+                            <td className="border border-gray-300 p-2">Uso eficiente dos ativos fixos.</td>
                           </tr>
                           <tr className="bg-gray-50">
-                            <td className="border border-gray-300 p-2">Giro do Ativo Permanente</td>
-                            <td className="border border-gray-300 p-2">0,69</td>
-                            <td className="border border-gray-300 p-2">≥ 0,8</td>
-                            <td className="border border-gray-300 p-2">Abaixo do ideal.</td>
-                          </tr>
-                          <tr>
                             <td className="border border-gray-300 p-2">Giro do Ativo Total</td>
-                            <td className="border border-gray-300 p-2">0,28</td>
-                            <td className="border border-gray-300 p-2">≥ 0,7</td>
-                            <td className="border border-gray-300 p-2">Baixo giro. Potencial ocioso.</td>
+                            <td className="border border-gray-300 p-2">0,08</td>
+                            <td className="border border-gray-300 p-2">&gt; 0,5</td>
+                            <td className="border border-gray-300 p-2">Muito baixo. Necessário melhor aproveitamento da estrutura.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="retorno-capital" className="border rounded-md">
+                    <AccordionTrigger className="text-lg font-medium px-4 py-3">
+                      Retorno sobre o Capital
+                    </AccordionTrigger>
+                    <AccordionContent className="px-4 py-3 text-sm">
+                      <table className="w-full table-auto border-collapse border border-gray-300 text-left">
+                        <thead>
+                          <tr className="bg-gray-100">
+                            <th className="border border-gray-300 p-2">Indicador</th>
+                            <th className="border border-gray-300 p-2">Valor Obtido</th>
+                            <th className="border border-gray-300 p-2">Valor Desejado</th>
+                            <th className="border border-gray-300 p-2">Análise do Indicador</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border border-gray-300 p-2">ROA</td>
+                            <td className="border border-gray-300 p-2">5,90%</td>
+                            <td className="border border-gray-300 p-2">&gt; 5%</td>
+                            <td className="border border-gray-300 p-2">Bom retorno sobre os ativos.</td>
+                          </tr>
+                          <tr className="bg-gray-50">
+                            <td className="border border-gray-300 p-2">ROE</td>
+                            <td className="border border-gray-300 p-2">6,90%</td>
+                            <td className="border border-gray-300 p-2">&gt; 7%</td>
+                            <td className="border border-gray-300 p-2">Quase ideal. Pode ser otimizado com reinvestimentos.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -392,10 +382,10 @@ const DiagnosticDetailFeb2025 = () => {
               <div className="mt-4">
                 <h4 className="font-semibold mb-2">Principais Pontos positivos:</h4>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Excelente cobertura de juros e alta liquidez</li>
-                  <li>Margens operacionais e líquidas acima da média</li>
-                  <li>Endividamento controlado e dívida líquida negativa</li>
-                  <li>Ciclo operacional eficiente e capital próprio bem aplicado</li>
+                  <li>Alta liquidez em todos os horizontes (corrente, seca, imediata)</li>
+                  <li>Estrutura de capital conservadora e baixa alavancagem</li>
+                  <li>Margens e rentabilidade acima da média do setor</li>
+                  <li>Cobertura de juros robusta</li>
                 </ul>
               </div>
             </div>
@@ -407,3 +397,4 @@ const DiagnosticDetailFeb2025 = () => {
 };
 
 export default DiagnosticDetailFeb2025;
+
