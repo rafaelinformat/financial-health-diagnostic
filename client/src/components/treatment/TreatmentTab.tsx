@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import TreatmentCard from './TreatmentCard';
 import TreatmentPlanCard from './TreatmentPlanCard';
-import { Upload, ChevronRight, ArrowRight } from 'lucide-react';
+import { Upload, ChevronRight, ArrowRight, Clipboard } from 'lucide-react';
 import { toast } from 'sonner';
 
 export type TreatmentPlanItem = {
@@ -21,7 +21,7 @@ const TreatmentTab = () => {
   const handleUpload = () => {
     setIsUploading(true);
     setTimeout(() => {
-      setIsLoading(false);
+      setIsUploading(false);
       setHasUploaded(true);
       toast.success('Dados financeiros carregados com sucesso!');
     }, 1500);
@@ -109,11 +109,12 @@ const TreatmentTab = () => {
               <TreatmentCard 
                 key={index}
                 title={treatment.title}
+                icon={Clipboard}
+                priority={treatment.statusText}
                 description={treatment.description}
-                statusText={treatment.statusText}
-                progress={treatment.progress}
-                startDate={treatment.startDate}
-                endDate={treatment.endDate}
+                metricLabel="Progresso"
+                metricValue={`${treatment.progress}%`}
+                metricSubtext={treatment.statusText}
               />
             ))}
           </div>
@@ -130,10 +131,12 @@ const TreatmentTab = () => {
               {treatmentPlans.map((plan, index) => (
                 <TreatmentPlanCard 
                   key={index}
-                  name={plan.title}
-                  description={plan.description}
-                  buttonText={plan.buttonText}
-                  buttonVariant={plan.buttonVariant}
+                  items={[{
+                    title: plan.title,
+                    description: plan.description,
+                    buttonText: plan.buttonText,
+                    buttonVariant: plan.buttonVariant
+                  }]}
                 />
               ))}
             </div>
