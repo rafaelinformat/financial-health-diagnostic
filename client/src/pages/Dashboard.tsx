@@ -88,6 +88,8 @@ const Dashboard = () => {
                   </div>
                   <p className="text-muted-foreground">
                     Considere negociar melhores condições de pagamento com fornecedores para melhorar o fluxo de caixa e a eficiência do capital de giro.
+
+            Teste de alteração de código no replit.
                   </p>
                 </div>
               </div>
