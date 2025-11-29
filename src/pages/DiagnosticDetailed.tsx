@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '@/components/DashboardLayout';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 const DiagnosticDetailed = () => {
   const navigate = useNavigate();
+  const [openSections, setOpenSections] = useState<string[]>([]);
+
+  const toggleSection = (section: string) => {
+    setOpenSections((prev) =>
+      prev.includes(section)
+        ? prev.filter((s) => s !== section)
+        : [...prev, section]
+    );
+  };
 
   return (
     <DashboardLayout>
@@ -83,305 +97,317 @@ const DiagnosticDetailed = () => {
               </Card>
             </div>
 
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Parâmetros de Liquidez</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Indicador</TableHead>
-                      <TableHead>Valor</TableHead>
-                      <TableHead>Referência</TableHead>
-                      <TableHead>Resultado da Análise</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>Liquidez Corrente</TableCell>
-                      <TableCell>1,68x</TableCell>
-                      <TableCell>Ideal &gt; 1,5</TableCell>
-                      <TableCell>Excelente - Alta capacidade de pagamento das obrigações de curto prazo</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Liquidez Seca</TableCell>
-                      <TableCell>1,45x</TableCell>
-                      <TableCell>Ideal &gt; 1</TableCell>
-                      <TableCell>Excelente - Ampla capacidade de liquidez sem depender de estoques</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Liquidez Imediata</TableCell>
-                      <TableCell>0,26x</TableCell>
-                      <TableCell>Ideal &gt; 1</TableCell>
-                      <TableCell>Excelente - Caixa suficiente para cobrir obrigações de curto prazo</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Accordion type="multiple" className="space-y-2">
+                {/* Parâmetros de Liquidez */}
+                <AccordionItem value="liquidez">
+                  <AccordionTrigger onClick={() => toggleSection('liquidez')}>
+                    Parâmetros de Liquidez
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <table className="w-full text-left border-collapse border border-gray-200">
+                      <thead>
+                        <tr className="bg-muted">
+                          <th className="border border-gray-300 px-2 py-1">Indicador</th>
+                          <th className="border border-gray-300 px-2 py-1">Valor</th>
+                          <th className="border border-gray-300 px-2 py-1">Referência</th>
+                          <th className="border border-gray-300 px-2 py-1">Resultado da Análise</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Liquidez Corrente</td>
+                          <td className="border border-gray-300 px-2 py-1">1,68x</td>
+                          <td className="border border-gray-300 px-2 py-1">Ideal &gt; 1,5</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Alta capacidade de pagamento das obrigações de curto prazo</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Liquidez Seca</td>
+                          <td className="border border-gray-300 px-2 py-1">1,45x</td>
+                          <td className="border border-gray-300 px-2 py-1">Ideal &gt; 1</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Ampla capacidade de liquidez sem depender de estoques</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Liquidez Imediata</td>
+                          <td className="border border-gray-300 px-2 py-1">0,26x</td>
+                          <td className="border border-gray-300 px-2 py-1">Ideal &gt; 1</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Caixa suficiente para cobrir obrigações de curto prazo</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </AccordionContent>
+                </AccordionItem>
 
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Atividades Operacionais</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Indicador</TableHead>
-                      <TableHead>Valor</TableHead>
-                      <TableHead>Interpretação</TableHead>
-                      <TableHead>Resultado da Análise</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>Prazo Médio de Recebimento (PMR)</TableCell>
-                      <TableCell>69,97 dias</TableCell>
-                      <TableCell>&lt; 30 dias (Ideal)</TableCell>
-                      <TableCell>Moderado - Prazo de recebimento em geral elevado</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Prazo Médio de Estocagem (PME)</TableCell>
-                      <TableCell>0,00 dias</TableCell>
-                      <TableCell>&lt; 60 dias (Ideal)</TableCell>
-                      <TableCell>Excelente - Sem estoque acumulado</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Prazo Médio de Pagamento (PMP)</TableCell>
-                      <TableCell>10,99 dias</TableCell>
-                      <TableCell>&gt; 30 dias (Ideal)</TableCell>
-                      <TableCell>Baixo - Prazos curtos de pagamento</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Ciclo Operacional</TableCell>
-                      <TableCell>69,97 dias</TableCell>
-                      <TableCell>&lt; 150 dias (Ideal)</TableCell>
-                      <TableCell>Bom - Ciclo operacional eficiente</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Ciclo de Caixa</TableCell>
-                      <TableCell>58,91 dias</TableCell>
-                      <TableCell>&lt; 90 dias (Ideal)</TableCell>
-                      <TableCell>Bom - Ciclo de caixa equilibrado</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                {/* Estrutura de Capital */}
+                <AccordionItem value="estrutura">
+                  <AccordionTrigger onClick={() => toggleSection('estrutura')}>
+                    Estrutura de Capital
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <table className="w-full text-left border-collapse border border-gray-200">
+                      <thead>
+                        <tr className="bg-muted">
+                          <th className="border border-gray-300 px-2 py-1">Indicador</th>
+                          <th className="border border-gray-300 px-2 py-1">Valor</th>
+                          <th className="border border-gray-300 px-2 py-1">Interpretação</th>
+                          <th className="border border-gray-300 px-2 py-1">Resultado da Análise</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Índice de Endividamento Geral</td>
+                          <td className="border border-gray-300 px-2 py-1">0,585</td>
+                          <td className="border border-gray-300 px-2 py-1">&lt; 0,6 (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Bom - Nível de endividamento dentro do ideal</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Capital de Terceiros / Capital Próprio</td>
+                          <td className="border border-gray-300 px-2 py-1">0,574</td>
+                          <td className="border border-gray-300 px-2 py-1">&lt; 1 (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Bom - Financiamento majoritário com capital próprio</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Composição do Endividamento</td>
+                          <td className="border border-gray-300 px-2 py-1">1,000</td>
+                          <td className="border border-gray-300 px-2 py-1">0,3 - 0,6 (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Alto - Todo o endividamento é de curto prazo</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </AccordionContent>
+                </AccordionItem>
 
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Estrutura de Capital</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Indicador</TableHead>
-                      <TableHead>Valor</TableHead>
-                      <TableHead>Interpretação</TableHead>
-                      <TableHead>Resultado da Análise</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>Índice de Endividamento Geral</TableCell>
-                      <TableCell>0,585</TableCell>
-                      <TableCell>&lt; 0,6 (Ideal)</TableCell>
-                      <TableCell>Bom - Nível de endividamento dentro do ideal</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Capital de Terceiros / Capital Próprio</TableCell>
-                      <TableCell>0,574</TableCell>
-                      <TableCell>&lt; 1 (Ideal)</TableCell>
-                      <TableCell>Bom - Financiamento majoritário com capital próprio</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Composição do Endividamento</TableCell>
-                      <TableCell>1,000</TableCell>
-                      <TableCell>0,3 - 0,6 (Ideal)</TableCell>
-                      <TableCell>Alto - Todo o endividamento é de curto prazo</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                {/* Pagamento do Principal */}
+                <AccordionItem value="pagprincipal">
+                  <AccordionTrigger onClick={() => toggleSection('pagprincipal')}>
+                    Pagamento do Principal
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <table className="w-full text-left border-collapse border border-gray-200">
+                      <thead>
+                        <tr className="bg-muted">
+                          <th className="border border-gray-300 px-2 py-1">Indicador</th>
+                          <th className="border border-gray-300 px-2 py-1">Valor</th>
+                          <th className="border border-gray-300 px-2 py-1">Interpretação</th>
+                          <th className="border border-gray-300 px-2 py-1">Resultado da Análise</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Dívida Líquida/EBITDA</td>
+                          <td className="border border-gray-300 px-2 py-1">-0,78x</td>
+                          <td className="border border-gray-300 px-2 py-1">&lt; 3 (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Negativo - Caixa superior à dívida</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Dívida Líquida/PL</td>
+                          <td className="border border-gray-300 px-2 py-1">-0,61x</td>
+                          <td className="border border-gray-300 px-2 py-1">&lt; 0,5 (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Negativo - Posição financeira confortável</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </AccordionContent>
+                </AccordionItem>
 
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Cobertura de Juros</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Indicador</TableHead>
-                      <TableHead>Valor</TableHead>
-                      <TableHead>Interpretação</TableHead>
-                      <TableHead>Resultado da Análise</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>Índice de Cobertura de Juros</TableCell>
-                      <TableCell>19,94x</TableCell>
-                      <TableCell>&gt; 3 (Ideal)</TableCell>
-                      <TableCell>Excelente - Alta capacidade de pagamento dos juros</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                {/* Margens */}
+                <AccordionItem value="margens">
+                  <AccordionTrigger onClick={() => toggleSection('margens')}>
+                    Margens
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <table className="w-full text-left border-collapse border border-gray-200">
+                      <thead>
+                        <tr className="bg-muted">
+                          <th className="border border-gray-300 px-2 py-1">Indicador</th>
+                          <th className="border border-gray-300 px-2 py-1">Valor</th>
+                          <th className="border border-gray-300 px-2 py-1">Interpretação</th>
+                          <th className="border border-gray-300 px-2 py-1">Resultado da Análise</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Margem Bruta</td>
+                          <td className="border border-gray-300 px-2 py-1">100%</td>
+                          <td className="border border-gray-300 px-2 py-1">&gt; 40% (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Alta margem de contribuição</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Margem Operacional</td>
+                          <td className="border border-gray-300 px-2 py-1">37,18%</td>
+                          <td className="border border-gray-300 px-2 py-1">&gt; 10% (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Alta eficiência operacional</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Margem Líquida</td>
+                          <td className="border border-gray-300 px-2 py-1">31,8%</td>
+                          <td className="border border-gray-300 px-2 py-1">&gt; 5% (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Alta eficiência na conversão de receita em lucro</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
 
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Pagamento do Principal</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Indicador</TableHead>
-                      <TableHead>Valor</TableHead>
-                      <TableHead>Interpretação</TableHead>
-                      <TableHead>Resultado da Análise</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>Dívida Líquida/EBITDA</TableCell>
-                      <TableCell>-0,78x</TableCell>
-                      <TableCell>&lt; 3 (Ideal)</TableCell>
-                      <TableCell>Negativo - Caixa superior à dívida</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Dívida Líquida/PL</TableCell>
-                      <TableCell>-0,61x</TableCell>
-                      <TableCell>&lt; 0,5 (Ideal)</TableCell>
-                      <TableCell>Negativo - Posição financeira confortável</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+              <Accordion type="multiple" className="space-y-2">
+                {/* Atividades Operacionais */}
+                <AccordionItem value="operacionais">
+                  <AccordionTrigger onClick={() => toggleSection('operacionais')}>
+                    Atividades Operacionais
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <table className="w-full text-left border-collapse border border-gray-200">
+                      <thead>
+                        <tr className="bg-muted">
+                          <th className="border border-gray-300 px-2 py-1">Indicador</th>
+                          <th className="border border-gray-300 px-2 py-1">Valor</th>
+                          <th className="border border-gray-300 px-2 py-1">Interpretação</th>
+                          <th className="border border-gray-300 px-2 py-1">Resultado da Análise</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Prazo Médio de Recebimento (PMR)</td>
+                          <td className="border border-gray-300 px-2 py-1">69,97 dias</td>
+                          <td className="border border-gray-300 px-2 py-1">&lt; 30 dias (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Moderado - Prazo de recebimento em geral elevado</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Prazo Médio de Estocagem (PME)</td>
+                          <td className="border border-gray-300 px-2 py-1">0,00 dias</td>
+                          <td className="border border-gray-300 px-2 py-1">&lt; 60 dias (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Sem estoque acumulado</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Prazo Médio de Pagamento (PMP)</td>
+                          <td className="border border-gray-300 px-2 py-1">10,99 dias</td>
+                          <td className="border border-gray-300 px-2 py-1">&gt; 30 dias (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Baixo - Prazos curtos de pagamento</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Ciclo Operacional</td>
+                          <td className="border border-gray-300 px-2 py-1">69,97 dias</td>
+                          <td className="border border-gray-300 px-2 py-1">&lt; 150 dias (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Bom - Ciclo operacional eficiente</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Ciclo de Caixa</td>
+                          <td className="border border-gray-300 px-2 py-1">58,91 dias</td>
+                          <td className="border border-gray-300 px-2 py-1">&lt; 90 dias (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Bom - Ciclo de caixa equilibrado</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </AccordionContent>
+                </AccordionItem>
 
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Rentabilidade e Eficiência</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Indicador</TableHead>
-                      <TableHead>Valor</TableHead>
-                      <TableHead>Interpretação</TableHead>
-                      <TableHead>Resultado da Análise</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>Giro do Ativo Total</TableCell>
-                      <TableCell>2,30x</TableCell>
-                      <TableCell>&gt; 0,5 (Ideal)</TableCell>
-                      <TableCell>Excelente - Alta eficiência no uso dos ativos</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Giro do Ativo Permanente</TableCell>
-                      <TableCell>5,99x</TableCell>
-                      <TableCell>&gt; 0,5 (Ideal)</TableCell>
-                      <TableCell>Bom - Eficiência no uso dos ativos permanentes</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Giro do Ativo Total</TableCell>
-                      <TableCell>5,99x</TableCell>
-                      <TableCell>&gt; 0,5 (Ideal)</TableCell>
-                      <TableCell>Bom - Eficiência geral no uso dos ativos</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                {/* Cobertura de Juros */}
+                <AccordionItem value="juros">
+                  <AccordionTrigger onClick={() => toggleSection('juros')}>
+                    Cobertura de Juros
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <table className="w-full text-left border-collapse border border-gray-200">
+                      <thead>
+                        <tr className="bg-muted">
+                          <th className="border border-gray-300 px-2 py-1">Indicador</th>
+                          <th className="border border-gray-300 px-2 py-1">Valor</th>
+                          <th className="border border-gray-300 px-2 py-1">Interpretação</th>
+                          <th className="border border-gray-300 px-2 py-1">Resultado da Análise</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Índice de Cobertura de Juros</td>
+                          <td className="border border-gray-300 px-2 py-1">19,94x</td>
+                          <td className="border border-gray-300 px-2 py-1">&gt; 3 (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Alta capacidade de pagamento dos juros</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </AccordionContent>
+                </AccordionItem>
 
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Margens</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Indicador</TableHead>
-                      <TableHead>Valor</TableHead>
-                      <TableHead>Interpretação</TableHead>
-                      <TableHead>Resultado da Análise</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>Margem Bruta</TableCell>
-                      <TableCell>100%</TableCell>
-                      <TableCell>&gt; 40% (Ideal)</TableCell>
-                      <TableCell>Excelente - Alta margem de contribuição</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Margem Operacional</TableCell>
-                      <TableCell>37,18%</TableCell>
-                      <TableCell>&gt; 10% (Ideal)</TableCell>
-                      <TableCell>Excelente - Alta eficiência operacional</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Margem Líquida</TableCell>
-                      <TableCell>31,8%</TableCell>
-                      <TableCell>&gt; 5% (Ideal)</TableCell>
-                      <TableCell>Excelente - Alta eficiência na conversão de receita em lucro</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                {/* Rentabilidade e Eficiência */}
+                <AccordionItem value="rentabilidade">
+                  <AccordionTrigger onClick={() => toggleSection('rentabilidade')}>
+                    Rentabilidade e Eficiência
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <table className="w-full text-left border-collapse border border-gray-200">
+                      <thead>
+                        <tr className="bg-muted">
+                          <th className="border border-gray-300 px-2 py-1">Indicador</th>
+                          <th className="border border-gray-300 px-2 py-1">Valor</th>
+                          <th className="border border-gray-300 px-2 py-1">Interpretação</th>
+                          <th className="border border-gray-300 px-2 py-1">Resultado da Análise</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Giro do Ativo Total</td>
+                          <td className="border border-gray-300 px-2 py-1">2,30x</td>
+                          <td className="border border-gray-300 px-2 py-1">&gt; 0,5 (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Alta eficiência no uso dos ativos</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Giro do Ativo Permanente</td>
+                          <td className="border border-gray-300 px-2 py-1">5,99x</td>
+                          <td className="border border-gray-300 px-2 py-1">&gt; 0,5 (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Bom - Eficiência no uso dos ativos permanentes</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">Giro do Ativo Total</td>
+                          <td className="border border-gray-300 px-2 py-1">5,99x</td>
+                          <td className="border border-gray-300 px-2 py-1">&gt; 0,5 (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Bom - Eficiência geral no uso dos ativos</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </AccordionContent>
+                </AccordionItem>
 
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Retorno sobre o Capital</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Indicador</TableHead>
-                      <TableHead>Valor</TableHead>
-                      <TableHead>Interpretação</TableHead>
-                      <TableHead>Resultado da Análise</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    <TableRow>
-                      <TableCell>ROA (Retorno sobre o Ativo)</TableCell>
-                      <TableCell>73,38%</TableCell>
-                      <TableCell>&gt; 5% (Ideal)</TableCell>
-                      <TableCell>Excelente - Retorno elevado sobre os ativos totais</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>ROE (Retorno sobre o Patrimônio Líquido)</TableCell>
-                      <TableCell>77,24%</TableCell>
-                      <TableCell>&gt; 15% (Ideal)</TableCell>
-                      <TableCell>Excelente - Alto retorno sobre o capital próprio</TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+                {/* Retorno sobre o Capital */}
+                <AccordionItem value="retorno">
+                  <AccordionTrigger onClick={() => toggleSection('retorno')}>
+                    Retorno sobre o Capital
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <table className="w-full text-left border-collapse border border-gray-200">
+                      <thead>
+                        <tr className="bg-muted">
+                          <th className="border border-gray-300 px-2 py-1">Indicador</th>
+                          <th className="border border-gray-300 px-2 py-1">Valor</th>
+                          <th className="border border-gray-300 px-2 py-1">Interpretação</th>
+                          <th className="border border-gray-300 px-2 py-1">Resultado da Análise</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">ROA (Retorno sobre o Ativo)</td>
+                          <td className="border border-gray-300 px-2 py-1">73,38%</td>
+                          <td className="border border-gray-300 px-2 py-1">&gt; 5% (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Retorno elevado sobre os ativos totais</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-2 py-1">ROE (Retorno sobre o Patrimônio Líquido)</td>
+                          <td className="border border-gray-300 px-2 py-1">77,24%</td>
+                          <td className="border border-gray-300 px-2 py-1">&gt; 15% (Ideal)</td>
+                          <td className="border border-gray-300 px-2 py-1">Excelente - Retorno excepcional para os acionistas</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
 
-            <Card className="border-border/40 shadow-sm">
-              <CardHeader className="bg-muted/30 pb-2">
-                <CardTitle className="text-lg text-primary">Conclusão</CardTitle>
-              </CardHeader>
-              <CardContent className="pt-4">
+            <Card className="border-border/40 shadow-sm mt-8">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-4">Conclusão</h3>
                 <p className="p-4 bg-muted/20 rounded-md">
-                  A empresa Tecno Chapa apresenta uma situação financeira "muito firme" em 2023, com alta rentabilidade, sólida posição de caixa e baixo endividamento. Os principais destaques são:
+                  A empresa apresenta uma situação financeira saudável, com alta rentabilidade, sólida posição de caixa e baixo endividamento. Os principais destaques incluem excelente capacidade de pagamento, alta eficiência operacional e retorno excepcional sobre o patrimônio líquido.
                 </p>
               </CardContent>
             </Card>
@@ -407,9 +433,6 @@ const DiagnosticDetailed = () => {
                   <h3 className="text-lg font-medium mb-4">Preferências de Análise</h3>
                   <p className="text-muted-foreground mb-4">
                     Configure as preferências para análises futuras.
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Conteúdo em desenvolvimento
                   </p>
                 </div>
               </div>
