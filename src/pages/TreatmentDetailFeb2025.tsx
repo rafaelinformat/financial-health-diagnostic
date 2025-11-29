@@ -158,7 +158,7 @@ const TreatmentDetailFeb2025 = () => {
 
         {/* RESULTADO ESPERADO */}
         <div className="rounded-lg overflow-hidden">
-          <div className="bg-cyan-500 text-white p-4">
+          <div className="bg-blue-600 text-white p-4">
             <h2 className="text-xl font-bold">RESULTADO ESPERADO</h2>
           </div>
           <div className="bg-white border border-t-0 p-6">
