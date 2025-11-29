@@ -40,35 +40,45 @@ const DiagnosticDetailJan2025 = () => {
         </div>
 
         {/* Dados da Empresa */}
-        <div className="glass-card p-6 rounded-md shadow-sm grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div>
-            <p className="font-semibold">Empresa:</p>
-            <p>TECNO CHAPA SOLUCOES EM CORTE E DOBRA LTDA</p>
-          </div>
-          <div>
-            <p className="font-semibold">Data de Criação da Empresa:</p>
-            <p>01/2023</p>
-          </div>
-          <div>
-            <p className="font-semibold">Idade da empresa:</p>
-            <p>2 anos</p>
-          </div>
-          <div>
-            <p className="font-semibold">Setor de atuação:</p>
-            <p>Indústria/Serviços (Corte e Dobra Metálica)</p>
-          </div>
-          <div>
-            <p className="font-semibold">Período de análise:</p>
-            <p>01/01/2025 a 31/01/2025</p>
-          </div>
-          <div>
-            <p className="font-semibold">Solicitado por:</p>
-            <p>Vitoria</p>
-          </div>
-          <div className="flex items-center justify-center col-span-full md:col-span-1">
-            <div className="text-green-600 flex flex-col items-center space-y-1">
-              <span className="rounded-full bg-green-100 px-4 py-1 font-semibold text-sm">SAUDÁVEL</span>
-              <CheckCircle2 size={64} />
+        <div className="glass-card p-6 rounded-md shadow-sm">
+          <h2 className="text-lg font-bold mb-4">Exame de Risco de Falência</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Coluna esquerda e central - dados */}
+            <div className="md:col-span-2 grid grid-cols-2 gap-4">
+              <div>
+                <p className="text-muted-foreground text-sm">Empresa:</p>
+                <p className="font-semibold">TECNO CHAPA SOLUCOES EM CORTE E DOBRA LTDA</p>
+              </div>
+              <div>
+                <p className="text-muted-foreground text-sm">Data de análise dos dados:</p>
+                <p className="font-semibold">Janeiro/2025</p>
+              </div>
+              <div>
+                <p className="text-muted-foreground text-sm">Data de Criação da Empresa:</p>
+                <p className="font-semibold">01/2023</p>
+              </div>
+              <div>
+                <p className="text-muted-foreground text-sm">Idade da empresa:</p>
+                <p className="font-semibold">2 anos</p>
+              </div>
+              <div>
+                <p className="text-muted-foreground text-sm">Setor:</p>
+                <p className="font-semibold">Indústria/Serviços (Corte e Dobra Metálica)</p>
+              </div>
+              <div>
+                <p className="text-muted-foreground text-sm">Solicitado por:</p>
+                <p className="font-semibold">Vitoria</p>
+              </div>
+            </div>
+            
+            {/* Coluna direita - Status */}
+            <div className="flex flex-col items-center justify-center">
+              <p className="text-muted-foreground text-sm mb-2">Status da Empresa</p>
+              <span className="rounded-full bg-green-100 px-4 py-1 font-semibold text-sm text-green-600 mb-2">
+                Saudável
+              </span>
+              <CheckCircle2 size={48} className="text-green-600" />
             </div>
           </div>
         </div>
