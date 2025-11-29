@@ -28,49 +28,49 @@ const TreatmentDetailFeb2025 = () => {
         {/* Dados da Empresa */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card Azul - Dados da Empresa */}
-          <div className="bg-blue-600 rounded-lg p-6 text-white space-y-6">
+          <div className="bg-blue-100 rounded-lg p-6 text-blue-900 space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-bold">TECNO MONTAGENS</h2>
-              <Badge className="bg-white text-blue-600 hover:bg-gray-100">2024</Badge>
+              <Badge className="bg-blue-600 text-white hover:bg-blue-700">2024</Badge>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-start gap-2">
-                <div className="bg-blue-500 rounded p-1">
-                  <FileText className="h-4 w-4" />
+                <div className="bg-blue-600 rounded p-1">
+                  <FileText className="h-4 w-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs opacity-80">Data de Criação</p>
+                  <p className="text-xs text-blue-700">Data de Criação</p>
                   <p className="font-semibold">10/12/2014</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-2">
-                <div className="bg-blue-500 rounded p-1">
-                  <TrendingUp className="h-4 w-4" />
+                <div className="bg-blue-600 rounded p-1">
+                  <TrendingUp className="h-4 w-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs opacity-80">Setor</p>
+                  <p className="text-xs text-blue-700">Setor</p>
                   <p className="font-semibold text-sm">Serviço Instalação Hidráulica/elétrica</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-2">
-                <div className="bg-blue-500 rounded p-1">
-                  <Check className="h-4 w-4" />
+                <div className="bg-blue-600 rounded p-1">
+                  <Check className="h-4 w-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs opacity-80">Solicitado por</p>
+                  <p className="text-xs text-blue-700">Solicitado por</p>
                   <p className="font-semibold">Vitoria</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-2">
-                <div className="bg-blue-500 rounded p-1">
-                  <Clock className="h-4 w-4" />
+                <div className="bg-blue-600 rounded p-1">
+                  <Clock className="h-4 w-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs opacity-80">Idade de empresa</p>
+                  <p className="text-xs text-blue-700">Idade de empresa</p>
                   <p className="font-semibold">10 anos</p>
                 </div>
               </div>
