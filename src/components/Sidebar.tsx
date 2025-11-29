@@ -73,7 +73,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     >
       <div className="flex items-center justify-between mb-8">
         {!isCollapsed && (
-          <div className="text-lg font-semibold ml-2">FinHealth</div>
+          <div className="text-lg font-semibold ml-2">SOLVER.IA</div>
         )}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
