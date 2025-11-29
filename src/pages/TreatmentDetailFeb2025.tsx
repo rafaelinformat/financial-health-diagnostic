@@ -26,46 +26,73 @@ const TreatmentDetailFeb2025 = () => {
         </div>
 
         {/* Dados da Empresa */}
-        <div className="glass-card p-6 rounded-md shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Coluna esquerda e central - dados */}
-            <div className="md:col-span-2 space-y-4">
-              <div className="flex items-center gap-3">
-                <h2 className="text-xl font-bold">TECNO CHAPA SOLUÇÕES EM CORTE E DOBRA LTDA</h2>
-                <Badge className="bg-blue-600 text-white hover:bg-blue-700">2025</Badge>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Card Azul - Dados da Empresa */}
+          <div className="bg-blue-600 rounded-lg p-6 text-white space-y-6">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold">TECNO MONTAGENS</h2>
+              <Badge className="bg-white text-blue-600 hover:bg-gray-100">2024</Badge>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-start gap-2">
+                <div className="bg-blue-500 rounded p-1">
+                  <FileText className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-xs opacity-80">Data de Criação</p>
+                  <p className="font-semibold">10/12/2014</p>
+                </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-muted-foreground text-sm">Data de Criação da Empresa:</p>
-                  <p className="font-semibold">01/2023</p>
+              <div className="flex items-start gap-2">
+                <div className="bg-blue-500 rounded p-1">
+                  <TrendingUp className="h-4 w-4" />
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-sm">Setor:</p>
-                  <p className="font-semibold">Indústria/Serviços (Corte e Dobra Metálica)</p>
+                  <p className="text-xs opacity-80">Setor</p>
+                  <p className="font-semibold text-sm">Serviço Instalação Hidráulica/elétrica</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-2">
+                <div className="bg-blue-500 rounded p-1">
+                  <Check className="h-4 w-4" />
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-sm">Solicitado por:</p>
+                  <p className="text-xs opacity-80">Solicitado por</p>
                   <p className="font-semibold">Vitoria</p>
                 </div>
+              </div>
+              
+              <div className="flex items-start gap-2">
+                <div className="bg-blue-500 rounded p-1">
+                  <Clock className="h-4 w-4" />
+                </div>
                 <div>
-                  <p className="text-muted-foreground text-sm">Idade da empresa:</p>
-                  <p className="font-semibold">2 anos</p>
+                  <p className="text-xs opacity-80">Idade de empresa</p>
+                  <p className="font-semibold">10 anos</p>
                 </div>
               </div>
             </div>
+          </div>
+          
+          {/* Card Branco - Exame de Risco */}
+          <div className="glass-card p-6 space-y-4">
+            <h3 className="text-lg font-semibold">Exame do Risco de Falência</h3>
             
-            {/* Coluna direita - Status */}
-            <div className="flex flex-col items-center justify-center border-l pl-6">
-              <p className="text-sm font-semibold mb-3">Exame do Risco de Falência</p>
-              <Badge className="bg-green-100 text-green-700 hover:bg-green-200 mb-3 text-sm px-4 py-1">
+            <div className="bg-green-50 rounded-lg p-4 space-y-3">
+              <p className="text-center text-green-600 font-bold text-lg">
                 BAIXO RISCO DE FALÊNCIA
-              </Badge>
-              <p className="text-sm text-center text-muted-foreground mb-2">
-                Empresa com fluxo de caixa positivo e indicadores saudáveis
               </p>
-              <p className="text-xs text-center text-muted-foreground">
-                Requer monitoramento e melhorias pontuais
+              
+              <p className="text-sm text-muted-foreground">
+                Com base nos indicadores de liquidez observados no negócio, conclui-se que a empresa está em baixo 
+                risco de falência no curto prazo.
+              </p>
+              
+              <p className="text-xs text-muted-foreground italic">
+                Obs: O exame é limitado com base nas informações financeiras fornecidas pela empresa.
               </p>
             </div>
           </div>
