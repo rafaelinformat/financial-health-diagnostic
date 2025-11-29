@@ -21,7 +21,7 @@ const TreatmentTab = () => {
   const handleUpload = () => {
     setIsUploading(true);
     setTimeout(() => {
-      setIsLoading(false);
+      setIsUploading(false);
       setHasUploaded(true);
       toast.success('Dados financeiros carregados com sucesso!');
     }, 1500);
@@ -30,35 +30,39 @@ const TreatmentTab = () => {
   const treatments = [
     {
       title: "Gestão de Fluxo de Caixa",
+      icon: Upload,
+      priority: "Alta",
       description: "Implementação de sistema de controle diário de fluxo de caixa para evitar problemas de liquidez",
-      statusText: "Em Andamento",
-      progress: 35,
-      startDate: "15/03/2023",
-      endDate: "15/06/2023"
+      metricLabel: "Progresso",
+      metricValue: "35%",
+      metricSubtext: "em andamento"
     },
     {
       title: "Redução de Custos Operacionais",
+      icon: ArrowRight,
+      priority: "Média",
       description: "Análise e redução de despesas operacionais em 15% nos próximos 60 dias",
-      statusText: "Não Iniciado",
-      progress: 0,
-      startDate: "Pendente",
-      endDate: "Pendente"
+      metricLabel: "Status",
+      metricValue: "0%",
+      metricSubtext: "não iniciado"
     },
     {
       title: "Renegociação de Dívidas",
+      icon: ChevronRight,
+      priority: "Alta",
       description: "Estratégia para renegociação de dívidas com fornecedores e instituições financeiras",
-      statusText: "Concluído",
-      progress: 100,
-      startDate: "10/01/2023",
-      endDate: "28/02/2023"
+      metricLabel: "Status",
+      metricValue: "100%",
+      metricSubtext: "concluído"
     },
     {
       title: "Diversificação de Receita",
+      icon: Upload,
+      priority: "Média",
       description: "Desenvolvimento de novas linhas de produtos para diversificar fontes de receita",
-      statusText: "Em Andamento",
-      progress: 65,
-      startDate: "05/02/2023",
-      endDate: "30/05/2023"
+      metricLabel: "Progresso",
+      metricValue: "65%",
+      metricSubtext: "em andamento"
     }
   ];
 
@@ -109,11 +113,12 @@ const TreatmentTab = () => {
               <TreatmentCard 
                 key={index}
                 title={treatment.title}
+                icon={treatment.icon}
+                priority={treatment.priority}
                 description={treatment.description}
-                statusText={treatment.statusText}
-                progress={treatment.progress}
-                startDate={treatment.startDate}
-                endDate={treatment.endDate}
+                metricLabel={treatment.metricLabel}
+                metricValue={treatment.metricValue}
+                metricSubtext={treatment.metricSubtext}
               />
             ))}
           </div>
@@ -127,15 +132,7 @@ const TreatmentTab = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {treatmentPlans.map((plan, index) => (
-                <TreatmentPlanCard 
-                  key={index}
-                  name={plan.title}
-                  description={plan.description}
-                  buttonText={plan.buttonText}
-                  buttonVariant={plan.buttonVariant}
-                />
-              ))}
+              <TreatmentPlanCard items={treatmentPlans} />
             </div>
           </div>
           
