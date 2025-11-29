@@ -100,12 +100,12 @@ const TreatmentDetailFeb2025 = () => {
 
         {/* TRATAMENTO FINANCEIRO RECOMENDADO */}
         <div className="rounded-lg overflow-hidden">
-          <div className="bg-purple-600 text-white p-4">
+          <div className="bg-blue-600 text-white p-4">
             <h2 className="text-xl font-bold">TRATAMENTO FINANCEIRO RECOMENDADO</h2>
           </div>
           <div className="bg-white border border-t-0 p-6 space-y-6">
             <div>
-              <h3 className="text-lg font-bold text-purple-600 mb-3">MELHORAR GESTÃO DE FLUXO DE CAIXA</h3>
+              <h3 className="text-lg font-bold text-blue-600 mb-3">MELHORAR GESTÃO DE FLUXO DE CAIXA</h3>
               <p className="text-sm text-muted-foreground mb-4">
                 Focada na redução do ciclo de caixa através do gerenciamento eficiente de recebíveis e pagamentos,
                 garantindo maior liquidez e previsibilidade financeira.
